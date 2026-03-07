@@ -14,9 +14,13 @@ const LETTER_GAP = 6;
  * @returns {string} The generated letter markup.
  */
 function createLetterMarkup(text) {
-	return [...text]
-		.map((ch) => `<span class="hero__letter" data-original="${ch}"><span class="hero__letter-inner">${ch}</span></span>`)
-		.join('');
+	let html = '';
+	for (const ch of text) {
+		html += '<span class="hero__letter" data-original="' + ch + '">';
+		html += '<span class="hero__letter-inner">' + ch + '</span>';
+		html += '</span>';
+	}
+	return html;
 }
 
 /**
@@ -130,13 +134,20 @@ function refreshLetterWidths(groups) {
  * Initializes the letter hover effect for all elements with [data-letter-hover].
  * Uses measured widths so hover grows the word without overlap or flicker.
  */
+function buildLetterGroups() {
+	const lines = document.querySelectorAll('[data-letter-hover]');
+	const groups = [];
+	for (const line of lines) {
+		const spans = splitTextIntoSpans(line);
+		addLetterListeners(spans);
+		groups.push({ line, spans });
+	}
+	return groups;
+}
+
 function initLetterHover() {
 	document.fonts.ready.then(() => {
-		const groups = Array.from(document.querySelectorAll('[data-letter-hover]')).map((line) => {
-			const spans = splitTextIntoSpans(line);
-			addLetterListeners(spans);
-			return { line, spans };
-		});
+		const groups = buildLetterGroups();
 		refreshLetterWidths(groups);
 		window.addEventListener('resize', () => refreshLetterWidths(groups));
 	});
@@ -144,6 +155,38 @@ function initLetterHover() {
 
 
 // Badge Icon Roll
+
+/**
+ * Measures the natural text width of a hidden clone inside the badge.
+ * @param {HTMLElement} badge - The badge element.
+ * @param {string} text - The text to measure.
+ * @returns {number} The required width including padding.
+ */
+function measureBadgeText(badge, text) {
+	const clone = document.createElement('span');
+	clone.className = 'hero__badge-text';
+	clone.style.position = 'absolute';
+	clone.style.visibility = 'hidden';
+	clone.style.whiteSpace = 'nowrap';
+	clone.textContent = text;
+	badge.appendChild(clone);
+	const width = clone.getBoundingClientRect().width;
+	clone.remove();
+	return width;
+}
+
+/**
+ * Sets --badge-width-default and --badge-width-hover on the badge
+ * based on the actual text content of both spans.
+ * @param {HTMLElement} badge - The badge element.
+ */
+function setBadgeWidths(badge) {
+	const defaultText = badge.querySelector('.hero__badge-text--default').textContent;
+	const hoverText = badge.querySelector('.hero__badge-text--hover').textContent;
+	const padding = 48;
+	badge.style.setProperty('--badge-width-default', measureBadgeText(badge, defaultText) + padding + 'px');
+	badge.style.setProperty('--badge-width-hover', measureBadgeText(badge, hoverText) + padding + 'px');
+}
 
 /**
  * Expands the badge and starts the hand roll-in animation.
@@ -154,7 +197,6 @@ function startBadgeExpand(wrapper, badge) {
 	wrapper.classList.add('is-hovered');
 	wrapper.classList.remove('is-leaving');
 	badge.classList.add('is-expanded');
-	badge.classList.remove('is-shrinking');
 }
 
 /**
@@ -166,7 +208,6 @@ function startBadgeShrink(wrapper, badge) {
 	wrapper.classList.remove('is-hovered');
 	wrapper.classList.add('is-leaving');
 	badge.classList.remove('is-expanded');
-	badge.classList.add('is-shrinking');
 }
 
 /**
@@ -185,16 +226,16 @@ function cleanUpAnimation(el, animationName, className) {
 
 /**
  * Initializes the badge hover effect with hand icon roll animation.
- * Sets up expand/shrink on mouseenter/mouseleave and cleans up animation classes.
+ * Measures text widths so the badge adapts dynamically to content.
  */
 function initIconRoll() {
 	document.querySelectorAll('.hero__badge-wrapper').forEach((wrapper) => {
 		const badge = wrapper.querySelector('.hero__badge');
+		setBadgeWidths(badge);
 
 		wrapper.addEventListener('mouseenter', () => startBadgeExpand(wrapper, badge));
 		wrapper.addEventListener('mouseleave', () => startBadgeShrink(wrapper, badge));
 
 		cleanUpAnimation(wrapper, 'hero-icon-roll-left', 'is-leaving');
-		cleanUpAnimation(badge, 'hero-badge-shrink', 'is-shrinking');
 	});
 }

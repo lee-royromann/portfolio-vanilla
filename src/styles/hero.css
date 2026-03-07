@@ -94,10 +94,12 @@
     font-size: 18px;
     font-weight: 500;
     line-height: 120%;
-    width: 140px;
+    width: var(--badge-width-default);
     height: 40px;
     overflow: hidden;
     cursor: default;
+    /* cubic-bezier for smooth animation to hover state that mimics a bounce effect */
+    transition: width 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .hero__badge-text {
@@ -113,7 +115,7 @@
 /* Expand state (controlled by JS) */
 
 .hero__badge.is-expanded {
-    animation: hero-badge-expand 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    width: var(--badge-width-hover);
     background-color: var(--color-blue);
 }
 
@@ -125,27 +127,13 @@
     opacity: 1;
 }
 
-/* Shrink state (controlled by JS) */
-
-.hero__badge.is-shrinking {
-    animation: hero-badge-shrink 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-.hero__badge.is-shrinking .hero__badge-text--default {
-    opacity: 1;
-}
-
-.hero__badge.is-shrinking .hero__badge-text--hover {
-    opacity: 0;
-}
-
 /* Waving Hand (Icon Roll) */
 
 .hero__badge-wrapper::before {
     content: "";
     position: absolute;
     top: -42px;
-    left: 65%;
+    right: 5px;
     width: 40px;
     height: 40px;
     background-image: url('../assets/icons/hero/waving_hand.svg');
@@ -153,7 +141,7 @@
     background-repeat: no-repeat;
     pointer-events: none;
     opacity: 0;
-    transform: translateX(0) rotate(180deg);
+    transform: translateX(-100%) rotate(180deg);
 }
 
 .hero__badge-wrapper.is-hovered::before {
@@ -363,24 +351,14 @@
 
 /* KEYFRAME ANIMATIONS */
 
-@keyframes hero-badge-expand {
-    0%   { width: 140px; }
-    100% { width: 230px; }
-}
-
-@keyframes hero-badge-shrink {
-    0%   { width: 230px; background-color: var(--color-blue); }
-    100% { width: 140px; background-color: transparent; }
-}
-
 @keyframes hero-icon-roll-right {
-    0%   { transform: translateX(0) rotate(90deg); opacity: 0; }
-    30%  { opacity: 0.4; }
-    100% { transform: translateX(100%) rotate(360deg); opacity: 1; }
+    0%   { transform: translateX(-100%) rotate(90deg); opacity: 0; }
+    50%  { opacity: 0.4; }
+    100% { transform: translateX(0) rotate(360deg); opacity: 1; }
 }
 
 @keyframes hero-icon-roll-left {
-    0%   { transform: translateX(100%) rotate(360deg); opacity: 1; }
-    80%  { opacity: 0; }
-    100% { transform: translateX(0) rotate(90deg); }
+    0%   { transform: translateX(0) rotate(360deg); opacity: 1; }
+    50%  { opacity: 0; }
+    100% { transform: translateX(-100%) rotate(90deg); }
 }
