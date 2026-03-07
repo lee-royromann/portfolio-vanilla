@@ -28,7 +28,7 @@ function animateOutline(outline, target) {
 		pos.x += (target.x - pos.x) * speed;
 		pos.y += (target.y - pos.y) * speed;
 		moveTo(outline, pos.x, pos.y);
-		requestAnimationFrame(update);
+		requestAnimationFrame(update); // calls itself every frame (~60fps)
 	}
 	update();
 }
@@ -103,5 +103,5 @@ function initNavbarScroll() {
 			navbar.classList.remove('navbar--hidden');
 		}
 		lastScrollY = currentScrollY;
-	}, { passive: true });
+	}, { passive: true }); // passive improves scroll performance
 }
