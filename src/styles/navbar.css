@@ -1,0 +1,159 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 1440px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 72px;
+    transition: transform 0.3s ease;
+}
+
+.navbar--hidden {
+    transform: translateX(-50%) translateY(-100%);
+}
+
+.navbar__logo {
+    height: 60px;
+}
+
+.navbar__link {
+    position: relative;
+    color: var(--color-white);
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+.navbar__link-line {
+    position: absolute;
+    pointer-events: none;
+    transition: clip-path 0.3s ease;
+}
+
+/* Shared styles for underline hover lines (Skills, Projects, Contact) */
+.navbar__link--skills .navbar__link-line,
+.navbar__link--projects .navbar__link-line,
+.navbar__link--contact .navbar__link-line {
+    height: 42px;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    clip-path: inset(0 100% 0 0);
+}
+
+.navbar__link--skills:hover .navbar__link-line,
+.navbar__link--projects:hover .navbar__link-line,
+.navbar__link--contact:hover .navbar__link-line {
+    clip-path: inset(0 0% 0 0);
+}
+
+/* About me – Oval from top to bottom */
+.navbar__link--about .navbar__link-line {
+    width: 105px;
+    height: 42px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    clip-path: inset(0 0 100% 0);
+}
+
+.navbar__link--about:hover .navbar__link-line {
+    clip-path: inset(0 0 0% 0);
+}
+
+/* Skills – individual width */
+.navbar__link--skills .navbar__link-line {
+    width: 68px;
+}
+
+/* Projects – individual width */
+.navbar__link--projects .navbar__link-line {
+    width: 100px;
+}
+
+/* Contact – individual width */
+.navbar__link--contact .navbar__link-line {
+    width: 105px;
+}
+
+.navbar__lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-white);
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 120%;
+    cursor: pointer;
+}
+
+.navbar__lang {
+    position: relative;
+    transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.navbar__lang--active {
+    color: var(--color-orange);
+    font-weight: 600;
+}
+
+.navbar__lang:not(.navbar__lang--active):hover .navbar__lang-rect {
+    clip-path: inset(0 0% 0 0);
+}
+
+.navbar__lang-rect {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+    transition: clip-path 0.3s ease;
+    clip-path: inset(0 100% 0 0);
+}
+
+.navbar__lang-rect--left {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    clip-path: inset(100% 0 0 100%);
+}
+
+.navbar__lang-rect--right {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(180deg);
+    clip-path: inset(100% 100% 0 0);
+}
+
+.navbar__lang-toggle {
+    width: 32px;
+    height: 8px;
+    border-radius: 50rem;
+    background: var(--color-orange);
+    border: 1px solid var(--color-light);
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+.navbar__lang-knob {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--color-blue);
+    border: 1px solid var(--color-light);
+    position: absolute;
+    top: 50%;
+    left: -2px;
+    transform: translateY(-50%);
+    transition: left 0.3s ease;
+}
+
+.navbar__lang-knob--right {
+    left: calc(100% - 14px);
+}
