@@ -39,7 +39,7 @@ function animateOutline(outline, target) {
  * @param {HTMLElement} outline - The outline circle element.
  */
 function setupHoverTargets(outline) {
-	const targets = document.querySelectorAll('a, button, [role="button"]');
+	const targets = document.querySelectorAll('a, button, [role="button"], [onclick], .navbar__logo');
 	targets.forEach((el) => {
 		el.addEventListener('mouseenter', () => outline.classList.add('cursor-outline--hover'));
 		el.addEventListener('mouseleave', () => outline.classList.remove('cursor-outline--hover'));
