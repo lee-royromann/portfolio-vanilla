@@ -2,13 +2,11 @@ const translations = {
 	de: {
 		"hero.badge.default": "Hallo Welt",
 		"hero.badge.hover": "ICH BIN LEE-ROY ROMANN",
-        "hero.title.sub": "ENTWICKLER",
 		"hero.cta": "Kontaktiere mich",
 	},
 	en: {
 		"hero.badge.default": "Hello world",
 		"hero.badge.hover": "I'M LEE-ROY ROMANN",
-        "hero.title.sub": "DEVELOPER",
 		"hero.cta": "Get in Touch",
 	},
 };
