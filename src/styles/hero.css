@@ -198,13 +198,11 @@
     display: block;
     width: 100%;
     text-align: center;
-    transform-origin: center bottom;
-    transition: transform 0.2s ease, color 0.2s ease;
+    transition: color 0.2s ease;
 }
 
 .hero__letter.is-hovered .hero__letter-inner {
     color: var(--color-yellow);
-    transform: scale(1.15);
 }
 
 .hero__letter--measure {

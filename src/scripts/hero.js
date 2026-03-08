@@ -3,153 +3,93 @@ document.addEventListener('DOMContentLoaded', () => {
 	initIconRoll();
 });
 
-const LETTER_SCALE = 1;
 const LETTER_GAP = 6;
 
 // Letter Hover
 
 /**
- * Builds the letter markup with an outer box and an inner visual span.
- * @param {string} text - The text to split into letters.
- * @returns {string} The generated letter markup.
+ * Flips the case of a character.
+ * @param {string} ch - The character to toggle.
+ * @returns {string} The toggled character.
  */
-function createLetterMarkup(text) {
-	let html = '';
-	for (const ch of text) {
-		html += '<span class="hero__letter" data-original="' + ch + '">';
-		html += '<span class="hero__letter-inner">' + ch + '</span>';
-		html += '</span>';
-	}
-	return html;
+function toggleCase(ch) {
+	return ch === ch.toUpperCase() ? ch.toLowerCase() : ch.toUpperCase();
 }
 
 /**
- * Splits a title line into measured hover letters.
- * @param {HTMLElement} el - The title line element.
- * @returns {HTMLSpanElement[]} The created outer letter spans.
+ * Creates a hidden measurement span inside a line for width calculations.
+ * @param {HTMLElement} line - The line to append the measurement span to.
+ * @returns {{ measure: HTMLSpanElement, mInner: HTMLSpanElement }}
  */
-function splitTextIntoSpans(el) {
-	el.innerHTML = createLetterMarkup(el.textContent.trim());
-	return Array.from(el.querySelectorAll('.hero__letter'));
-}
-
-/**
- * Creates one hidden measurement letter inside the same line.
- * @param {HTMLElement} line - The line used for style inheritance.
- * @returns {HTMLSpanElement} The hidden measurement letter.
- */
-function createMeasureLetter(line) {
+function createMeasureSpan(line) {
 	const measure = document.createElement('span');
 	measure.className = 'hero__letter hero__letter--measure';
 	measure.innerHTML = '<span class="hero__letter-inner"></span>';
 	line.appendChild(measure);
-	return measure;
+	return { measure, mInner: measure.querySelector('.hero__letter-inner') };
 }
 
 /**
- * Flips the case of a character.
- * @param {string} original - The original character.
- * @returns {string} The toggled character.
+ * Measures base and hover widths for all letter spans in a line
+ * using a single hidden measurement element.
+ * @param {HTMLElement} line - The title line containing the letter spans.
  */
-function toggleCase(original) {
-	return original === original.toUpperCase()
-		? original.toLowerCase()
-		: original.toUpperCase();
-}
+function measureLetterWidths(line) {
+	const { measure, mInner } = createMeasureSpan(line);
 
-/**
- * Measures the base and hover width for one letter.
- * @param {string} original - The original character.
- * @param {HTMLSpanElement} measure - The hidden measurement letter.
- * @returns {{baseWidth: number, hoverWidth: number}} The measured widths.
- */
-function getLetterWidths(original, measure) {
-	const inner = measure.querySelector('.hero__letter-inner');
-	inner.textContent = original;
-	const baseWidth = measure.getBoundingClientRect().width;
-	inner.textContent = toggleCase(original);
-	const nextWidth = measure.getBoundingClientRect().width;
-	const hoverWidth = Math.max(baseWidth, nextWidth) * LETTER_SCALE + LETTER_GAP;
-	return { baseWidth, hoverWidth };
-}
-
-/**
- * Stores the measured width values on all letters in one line.
- * @param {HTMLSpanElement[]} spans - The outer letter spans.
- * @param {HTMLElement} line - The line containing the letters.
- */
-function setLetterWidths(spans, line) {
-	const measure = createMeasureLetter(line);
-	spans.forEach((span) => {
-		const { baseWidth, hoverWidth } = getLetterWidths(span.dataset.original, measure);
-		span.style.setProperty('--letter-base-width', `${baseWidth}px`);
-		span.style.setProperty('--letter-hover-width', `${hoverWidth}px`);
-	});
+	for (const span of line.querySelectorAll('.hero__letter:not(.hero__letter--measure)')) {
+		const ch = span.dataset.original;
+		mInner.textContent = ch;
+		const baseW = measure.getBoundingClientRect().width;
+		mInner.textContent = toggleCase(ch);
+		const hoverW = Math.max(baseW, measure.getBoundingClientRect().width) + LETTER_GAP;
+		span.style.setProperty('--letter-base-width', `${baseW}px`);
+		span.style.setProperty('--letter-hover-width', `${hoverW}px`);
+	}
 	measure.remove();
 }
 
 /**
- * Activates the hover effect on a single letter span.
- * Toggles the displayed case and adds the hover class.
- * @param {HTMLSpanElement} span - The outer letter span to activate.
+ * Replaces a line's text with individual letter spans for hover interaction.
+ * @param {HTMLElement} line - The title line element.
  */
-function applyHover(span) {
-	const inner = span.querySelector('.hero__letter-inner');
-	inner.textContent = toggleCase(span.dataset.original);
-	span.classList.add('is-hovered');
+function splitIntoLetterSpans(line) {
+	const text = line.textContent.trim();
+	line.innerHTML = [...text]
+		.map((ch) => `<span class="hero__letter" data-original="${ch}"><span class="hero__letter-inner">${ch}</span></span>`)
+		.join('');
 }
 
 /**
- * Removes the hover effect from a single letter span.
- * Restores the original character and removes the hover class.
- * @param {HTMLSpanElement} span - The outer letter span to reset.
+ * Adds hover listeners that toggle each letter's case and highlight it.
+ * @param {HTMLElement} line - The title line containing the letter spans.
  */
-function removeHover(span) {
-	const inner = span.querySelector('.hero__letter-inner');
-	inner.textContent = span.dataset.original;
-	span.classList.remove('is-hovered');
-}
-
-/**
- * Adds simple mouseenter and mouseleave listeners to all letters.
- * @param {HTMLSpanElement[]} spans - All outer letter spans.
- */
-
-function addLetterListeners(spans) {
-	spans.forEach((span) => {
-		span.addEventListener('mouseenter', () => applyHover(span));
-		span.addEventListener('mouseleave', () => removeHover(span));
-	});
-}
-
-/**
- * Recalculates widths for all letter hover lines.
- * @param {Array<{ line: HTMLElement, spans: HTMLSpanElement[] }>} groups - All letter groups.
- */
-function refreshLetterWidths(groups) {
-	groups.forEach(({ line, spans }) => setLetterWidths(spans, line));
+function addLetterListeners(line) {
+	for (const span of line.querySelectorAll('.hero__letter')) {
+		const inner = span.querySelector('.hero__letter-inner');
+		const ch = span.dataset.original;
+		span.addEventListener('mouseenter', () => {
+			inner.textContent = toggleCase(ch);
+			span.classList.add('is-hovered');
+		});
+		span.addEventListener('mouseleave', () => {
+			inner.textContent = ch;
+			span.classList.remove('is-hovered');
+		});
+	}
 }
 
 /**
  * Initializes the letter hover effect for all elements with [data-letter-hover].
- * Uses measured widths so hover grows the word without overlap or flicker.
+ * Splits text into individual spans, measures widths, and adds hover listeners.
  */
-function buildLetterGroups() {
-	const lines = document.querySelectorAll('[data-letter-hover]');
-	const groups = [];
-	for (const line of lines) {
-		const spans = splitTextIntoSpans(line);
-		addLetterListeners(spans);
-		groups.push({ line, spans });
-	}
-	return groups;
-}
-
 function initLetterHover() {
 	document.fonts.ready.then(() => {
-		const groups = buildLetterGroups();
-		refreshLetterWidths(groups);
-		window.addEventListener('resize', () => refreshLetterWidths(groups));
+		document.querySelectorAll('[data-letter-hover]').forEach((line) => {
+			splitIntoLetterSpans(line);
+			measureLetterWidths(line);
+			addLetterListeners(line);
+		});
 	});
 }
 
