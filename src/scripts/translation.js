@@ -1,10 +1,18 @@
 const translations = {
 	de: {
+		"navbar.link.about": "Über mich",
+		"navbar.link.skills": "Skills",
+		"navbar.link.projects": "Projekte",
+		"navbar.link.contact": "Kontakt",
 		"hero.badge.default": "Hallo Welt",
 		"hero.badge.hover": "ICH BIN LEE-ROY ROMANN",
 		"hero.cta": "Kontaktiere mich",
 	},
 	en: {
+		"navbar.link.about": "About me",
+		"navbar.link.skills": "Skills",
+		"navbar.link.projects": "Projects",
+		"navbar.link.contact": "Contact",
 		"hero.badge.default": "Hello world",
 		"hero.badge.hover": "I'M LEE-ROY ROMANN",
 		"hero.cta": "Get in Touch",
@@ -57,20 +65,15 @@ function translatePage(lang) {
  * @param {'de'|'en'} lang - The active language.
  */
 function updateSwitchUI(lang) {
-	const knob = document.querySelector('.navbar__lang-knob');
-	const langLeft = document.querySelector('.navbar__lang--left');
-	const langRight = document.querySelector('.navbar__lang--right');
-	if (!knob || !langLeft || !langRight) return;
-
-	if (lang === 'en') {
-		knob.classList.remove('navbar__lang-knob--right');
-		langLeft.classList.add('navbar__lang--active');
-		langRight.classList.remove('navbar__lang--active');
-	} else {
-		knob.classList.add('navbar__lang-knob--right');
-		langLeft.classList.remove('navbar__lang--active');
-		langRight.classList.add('navbar__lang--active');
-	}
+	document.querySelectorAll('.navbar__lang-knob').forEach((knob) => {
+		knob.classList.toggle('navbar__lang-knob--right', lang === 'de');
+	});
+	document.querySelectorAll('.navbar__lang--left').forEach((el) => {
+		el.classList.toggle('navbar__lang--active', lang === 'en');
+	});
+	document.querySelectorAll('.navbar__lang--right').forEach((el) => {
+		el.classList.toggle('navbar__lang--active', lang === 'de');
+	});
 }
 
 /**
