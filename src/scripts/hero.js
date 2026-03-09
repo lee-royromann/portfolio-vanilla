@@ -85,10 +85,14 @@ function addLetterListeners(line) {
  */
 function initLetterHover() {
 	document.fonts.ready.then(() => {
-		document.querySelectorAll('[data-letter-hover]').forEach((line) => {
+		const lines = document.querySelectorAll('[data-letter-hover]');
+		lines.forEach((line) => {
 			splitIntoLetterSpans(line);
 			measureLetterWidths(line);
 			addLetterListeners(line);
+		});
+		window.addEventListener('resize', () => {
+			lines.forEach((line) => measureLetterWidths(line));
 		});
 	});
 }
