@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 	initCustomCursor();
 	initNavbarScroll();
+	initMobileMenu();
 });
 
 /**
@@ -104,4 +105,35 @@ function initNavbarScroll() {
 		}
 		lastScrollY = currentScrollY;
 	}, { passive: true }); // passive improves scroll performance
+}
+
+/**
+ * Initializes the mobile menu open/close behavior.
+ * Opens on burger click, closes on X or link click.
+ */
+function initMobileMenu() {
+	const burger = document.querySelector('.navbar__burger');
+	const menu = document.querySelector('.navbar__menu');
+	const closeBtn = document.querySelector('.navbar__close');
+	if (!burger || !menu || !closeBtn) return;
+
+	const links = menu.querySelectorAll('.navbar__link');
+
+	burger.addEventListener('click', () => {
+		menu.classList.remove('is-closing');
+		menu.classList.add('is-open');
+		menu.setAttribute('aria-hidden', 'false');
+		document.body.style.overflow = 'hidden';
+	});
+
+	function closeMenu() {
+		menu.classList.add('is-closing');
+		menu.classList.remove('is-open');
+		menu.setAttribute('aria-hidden', 'true');
+		document.body.style.overflow = '';
+		menu.addEventListener('transitionend', () => menu.classList.remove('is-closing'), { once: true });
+	}
+
+	closeBtn.addEventListener('click', closeMenu);
+	links.forEach((link) => link.addEventListener('click', closeMenu));
 }
