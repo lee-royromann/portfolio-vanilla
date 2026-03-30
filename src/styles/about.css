@@ -116,13 +116,22 @@
     margin-top: 2px;
     object-fit: contain;
     object-position: left;
+    animation: line-draw 6s ease-in-out infinite;
+}
+
+@keyframes line-draw {
+    0%   { clip-path: inset(0 100% 0 0); }
+    5%   { clip-path: inset(0 0 0 0); }
+    72%  { clip-path: inset(0 0 0 0); }
+    77%  { clip-path: inset(0 100% 0 0); }
+    100% { clip-path: inset(0 100% 0 0); }
 }
 
 .about__text {
     font-family: 'Bricolage Grotesque', sans-serif;
     font-size: 20px;
     font-weight: 400;
-    line-height: 100%;
+    line-height: 120%;
     color: #0E1013;
 }
 
