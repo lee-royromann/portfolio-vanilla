@@ -80,6 +80,10 @@ function initCustomCursor() {
 		target.x = e.clientX;
 		target.y = e.clientY;
 		moveTo(dot, e.clientX, e.clientY);
+
+		const isDark = !!e.target.closest('[data-cursor-dark]');
+		dot.classList.toggle('cursor-dot--dark', isDark);
+		outline.classList.toggle('cursor-outline--dark', isDark);
 	});
 
 	animateOutline(outline, target);

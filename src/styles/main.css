@@ -121,3 +121,11 @@ body {
 .cursor-outline--hover {
     opacity: 0;
 }
+
+.cursor-dot--dark {
+    background-color: #0E1013;
+}
+
+.cursor-outline--dark {
+    border-color: #0E1013;
+}
