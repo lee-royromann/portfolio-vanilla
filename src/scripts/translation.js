@@ -15,6 +15,10 @@ const translations = {
 		"about.text": "Hey, ich bin Lee-Roy. Ich bin ein Frontend-Entwickler, der es liebt, Ideen in saubere, interaktive Web-Erlebnisse zu verwandeln. Was mich antreibt, ist der Moment, wenn Design und Code nahtlos zusammenfinden und Interfaces entstehen, die nicht nur gut aussehen, sondern sich auch intuitiv anfühlen. Jedes Projekt ist eine Chance, meine Fähigkeiten weiterzuentwickeln und die perfekte Balance zwischen Kreativität und Performance zu finden.",
 		"about.text2": "Lass uns zusammenarbeiten und etwas Bemerkenswertes schaffen!",
 		"about.cta": "Schreib mir",
+		"skills.subtitle": "MEIN STACK",
+		"skills.title": "Skill set",
+		"skills.description": "In Projekten sammelte ich praxisnahe Frontend-Erfahrung, übersetzte Konzepte in responsive Interfaces, arbeitete in strukturierten Workflows und schärfte meinen Entwicklungsansatz kontinuierlich.",
+		"skills.peel.title": "Außerdem interessiere ich mich für:",
 	},
 	en: {
 		"navbar.link.about": "About me",
@@ -32,6 +36,10 @@ const translations = {
 		"about.text": "Hey there, I'm Lee-Roy. I'm a frontend developer who loves turning ideas into clean, interactive web experiences. What drives me is the moment when design and code come together seamlessly, building interfaces that not only look great but feel intuitive to use. Every project is a chance to push my skills further and find that perfect balance between creativity and performance.",
 		"about.text2": "Let's collaborate and build something remarkable together!",
 		"about.cta": "Let's talk",
+		"skills.subtitle": "MY STACK",
+		"skills.title": "Skill set",
+		"skills.description": "Across projects, I gained hands-on frontend experience, turning concepts into responsive interfaces, collaborating in structured workflows, and refining my development approach.",
+		"skills.peel.title": "Also, I'm interested in diving into:",
 	},
 };
 
