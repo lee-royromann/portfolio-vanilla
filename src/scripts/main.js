@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	initCustomCursor();
 	initNavbarScroll();
 	initMobileMenu();
+	initPeelOff();
 });
 
 /**
@@ -115,6 +116,27 @@ function initNavbarScroll() {
  * Initializes the mobile menu open/close behavior.
  * Opens on burger click, closes on X or link click.
  */
+/**
+ * Initializes the peel-off sticker interaction in the skills section.
+ * Clicking the sticker transitions through default → transition → final state.
+ */
+function initPeelOff() {
+	const peelOff = document.querySelector('.skills__peel-off');
+	if (!peelOff) return;
+
+	peelOff.addEventListener('click', () => {
+		if (peelOff.classList.contains('is-peeled')) return;
+		if (peelOff.classList.contains('is-peeling')) return;
+
+		peelOff.classList.add('is-peeling');
+
+		setTimeout(() => {
+			peelOff.classList.remove('is-peeling');
+			peelOff.classList.add('is-peeled');
+		}, 150);
+	});
+}
+
 function initMobileMenu() {
 	const burger = document.querySelector('.navbar__burger');
 	const menu = document.querySelector('.navbar__menu');
