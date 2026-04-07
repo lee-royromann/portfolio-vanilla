@@ -4,15 +4,32 @@
     position: relative;
     width: 100%;
     padding: 100px 120px 180px;
+    margin-bottom: -20px;
+    z-index: 1;
+    background-color: var(--color-light);
+    overflow: hidden;
+}
+
+.skills::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -2px;
+    right: -3px;
     background-image: url('../assets/img/1_background/skills.png');
     background-size: cover;
     background-position: bottom center;
     background-repeat: no-repeat;
+    z-index: 0;
+    pointer-events: none;
 }
 
 /* ---------- 2-Row Layout ---------- */
 
 .skills__layout {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     gap: 48px;
@@ -165,7 +182,7 @@
     flex-direction: column;
     align-items: center;
     width: 100px;
-    /* gap: 8px; */
+    gap: 8px;
 }
 
 .skills__icon {
@@ -403,7 +420,6 @@
 @media (max-width: 925px) {
     .skills {
         padding: 48px 48px 140px;
-        background-size: cover;
     }
 
     .skills__layout {
@@ -529,6 +545,10 @@
     .skills__icon {
         width: 52px;
         height: 52px;
+    }
+
+    .skills__icon {
+        filter: none;
     }
 
     .skills__label {
