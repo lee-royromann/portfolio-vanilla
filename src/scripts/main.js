@@ -99,17 +99,49 @@ function initCustomCursor() {
 function initNavbarScroll() {
 	const navbar = document.querySelector('.navbar');
 	if (!navbar) return;
+	const hero = document.querySelector('.hero');
 	let lastScrollY = window.scrollY;
+	let scrollLocked = false;
 
 	window.addEventListener('scroll', () => {
 		const currentScrollY = window.scrollY;
+
+		if (scrollLocked) {
+			lastScrollY = currentScrollY;
+			navbar.classList.toggle('navbar--scrolled', currentScrollY > 0);
+			return;
+		}
+
 		if (currentScrollY > lastScrollY && currentScrollY > 80) {
 			navbar.classList.add('navbar--hidden');
 		} else {
 			navbar.classList.remove('navbar--hidden');
 		}
+
+		navbar.classList.toggle('navbar--scrolled', currentScrollY > 0);
+
 		lastScrollY = currentScrollY;
-	}, { passive: true }); // passive improves scroll performance
+	}, { passive: true });
+
+	function lockScroll() {
+		scrollLocked = true;
+		navbar.classList.remove('navbar--hidden');
+		setTimeout(() => {
+			scrollLocked = false;
+			lastScrollY = window.scrollY;
+		}, 800);
+	}
+
+	navbar.querySelectorAll('.navbar__link, .navbar__lang, .navbar__lang-toggle').forEach(el => {
+		el.addEventListener('click', lockScroll);
+	});
+
+	document.addEventListener('click', (e) => {
+		if (!navbar.contains(e.target) && !navbar.classList.contains('navbar--hidden')) {
+			navbar.classList.add('navbar--hidden');
+			lastScrollY = window.scrollY;
+		}
+	});
 }
 
 /**
@@ -144,6 +176,7 @@ function initMobileMenu() {
 	if (!burger || !menu || !closeBtn) return;
 
 	const links = menu.querySelectorAll('.navbar__link');
+	const MOBILE_BP = 740;
 
 	burger.addEventListener('click', () => {
 		menu.classList.remove('is-closing');
@@ -153,13 +186,27 @@ function initMobileMenu() {
 	});
 
 	function closeMenu() {
+		if (!menu.classList.contains('is-open')) return;
 		menu.classList.add('is-closing');
 		menu.classList.remove('is-open');
 		menu.setAttribute('aria-hidden', 'true');
 		document.body.style.overflow = '';
-		menu.addEventListener('transitionend', () => menu.classList.remove('is-closing'), { once: true });
+
+		const fallback = setTimeout(() => menu.classList.remove('is-closing'), 500);
+		menu.addEventListener('transitionend', () => {
+			clearTimeout(fallback);
+			menu.classList.remove('is-closing');
+		}, { once: true });
 	}
 
 	closeBtn.addEventListener('click', closeMenu);
 	links.forEach((link) => link.addEventListener('click', closeMenu));
+
+	window.addEventListener('resize', () => {
+		if (window.innerWidth > MOBILE_BP && menu.classList.contains('is-open')) {
+			menu.classList.remove('is-open', 'is-closing');
+			menu.setAttribute('aria-hidden', 'true');
+			document.body.style.overflow = '';
+		}
+	}, { passive: true });
 }

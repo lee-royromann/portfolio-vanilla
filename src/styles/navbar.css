@@ -17,6 +17,24 @@
     transform: translateY(-100%);
 }
 
+.navbar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(14, 16, 19, 0);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.navbar--scrolled::before {
+    background-color: rgba(14, 16, 19, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
 .navbar__logo {
     display: none;
 }
