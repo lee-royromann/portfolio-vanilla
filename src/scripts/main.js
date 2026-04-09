@@ -43,7 +43,7 @@ function animateOutline(outline, target) {
  * so the native pointer cursor is visible.
  */
 function setupHoverTargets(dot, outline) {
-	const targets = document.querySelectorAll('a, button, [role="button"], [onclick], .navbar__logo, .skills__peel-off');
+	const targets = document.querySelectorAll('a, button, [role="button"], [onclick], .navbar__logo, .skills__peel-off, .testimonials__card');
 	targets.forEach((el) => {
 		el.addEventListener('mouseenter', () => {
 			outline.classList.add('cursor-outline--hover');

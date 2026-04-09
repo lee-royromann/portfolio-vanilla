@@ -90,7 +90,8 @@ button,
 input[type="submit"],
 label[for],
 .navbar__logo,
-.skills__peel-off {
+.skills__peel-off,
+.testimonials__card {
     cursor: pointer !important;
 }
 
