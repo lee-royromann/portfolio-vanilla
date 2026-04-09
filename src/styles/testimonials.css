@@ -28,6 +28,15 @@
 .testimonials__arrow {
     width: 100px;
     height: 36px;
+    animation: line-draw-rtl 6s ease-in-out infinite;
+}
+
+@keyframes line-draw-rtl {
+    0%   { clip-path: inset(0 0 0 100%); }
+    5%   { clip-path: inset(0 0 0 0); }
+    72%  { clip-path: inset(0 0 0 0); }
+    77%  { clip-path: inset(0 0 0 100%); }
+    100% { clip-path: inset(0 0 0 100%); }
 }
 
 .testimonials__subtitle {
@@ -293,6 +302,14 @@
 
     .testimonials__title {
         text-align: right;
+    }
+
+    .testimonials__subtitle {
+        font-size: 18px;
+    }
+
+    .testimonials__arrow {
+        width: 90px;
     }
 }
 
