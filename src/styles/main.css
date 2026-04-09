@@ -91,8 +91,15 @@ input[type="submit"],
 label[for],
 .navbar__logo,
 .skills__peel-off,
-.testimonials__card {
+.testimonials__card,
+.contact__submit:enabled,
+.contact__input,
+.contact__checkbox {
     cursor: pointer !important;
+}
+
+.contact__submit:disabled {
+    cursor: not-allowed !important;
 }
 
 /* ---------- Custom Cursor ---------- */

@@ -1,0 +1,361 @@
+/* ========== CONTACT SECTION ========== */
+
+.contact {
+    position: relative;
+    width: 100%;
+    padding: 180px 120px 70px;
+    overflow: hidden;
+    background-color: var(--color-light);
+}
+
+.contact__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.contact__content {
+    position: relative;
+    display: flex;
+    gap: 80px;
+    z-index: 1;
+}
+
+/* ---------- Left Column ---------- */
+
+.contact__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact__header {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact__subtitle {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 100%;
+    text-transform: uppercase;
+    color: var(--color-white);
+    margin-bottom: 12px;
+}
+
+.contact__title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 100%;
+    color: var(--color-white);
+}
+
+.contact__text {
+    margin-top: 32px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--color-white);
+    text-align: justify;
+}
+
+.contact__text p + p {
+    margin-top: 16px;
+}
+
+.contact__arrow {
+    width: 280px;
+    margin-top: 48px;
+    align-self: flex-end;
+}
+
+/* ---------- Right Column ---------- */
+
+.contact__form-wrapper {
+    flex: 1;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------- Sticker ---------- */
+
+.contact__sticker {
+    position: relative;
+    width: 168px;
+    height: 168px;
+    align-self: flex-end;
+    margin-bottom: 16px;
+}
+
+.contact__sticker-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: rotate(90deg);
+}
+
+.contact__sticker-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+}
+
+/* ---------- Form ---------- */
+
+.contact__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.contact__field {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid var(--color-yellow);
+    padding: 16px 0;
+}
+
+.contact__label {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 120%;
+    color: var(--color-white);
+}
+
+.contact__input {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--color-white);
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 4px 0;
+}
+
+.contact__input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.contact__textarea {
+    resize: none;
+    min-height: 24px;
+}
+
+/* ---------- Privacy ---------- */
+
+.contact__privacy {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.contact__checkbox {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: var(--color-blue);
+    cursor: pointer;
+}
+
+.contact__privacy-text {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 120%;
+    color: var(--color-white);
+}
+
+.contact__privacy-link {
+    color: var(--color-blue);
+    text-decoration: underline;
+}
+
+/* ---------- Submit Button ---------- */
+
+.contact__submit {
+    align-self: flex-end;
+    margin-top: 16px;
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 24px;
+    border: 1px solid var(--color-white);
+    border-radius: 100px;
+    color: var(--color-white);
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 120%;
+    background: transparent;
+    box-shadow: 2px 4px 0px 0px var(--color-white);
+    transition: background-color 0.3s ease, box-shadow 0.2s ease, transform 0.2s ease, opacity 0.2s;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.contact__submit:enabled {
+    opacity: 1;
+    cursor: pointer !important;
+}
+
+.contact__submit:enabled:hover {
+    background-color: var(--color-orange);
+}
+
+.contact__submit:enabled:active {
+    background-color: var(--color-orange);
+    box-shadow: 0 0 0 0 var(--color-white);
+    transform: translateY(4px);
+}
+
+/* ========== FOOTER (inside contact) ========== */
+
+.contact__footer {
+    position: relative;
+    z-index: 1;
+}
+
+.contact__footer-top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 32px;
+}
+
+.contact__footer-logo {
+    height: 40px;
+    object-fit: contain;
+}
+
+.contact__footer-copyright {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--color-white);
+}
+
+.contact__footer-links {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact__footer-link {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--color-white);
+    text-decoration: none;
+}
+
+.contact__footer-link:hover {
+    color: var(--color-orange);
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 1380px) {
+    .contact {
+        padding: 80px 80px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .contact {
+        padding: 80px 60px;
+    }
+
+    .contact__content {
+        gap: 48px;
+    }
+}
+
+@media (max-width: 1045px) {
+    .contact {
+        padding: 72px 48px;
+    }
+
+    .contact__title {
+        font-size: 56px;
+    }
+}
+
+@media (max-width: 925px) {
+    .contact {
+        padding: 48px 48px;
+    }
+}
+
+@media (max-width: 740px) {
+    .contact {
+        padding: 56px 40px;
+    }
+
+    .contact__content {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .contact__title {
+        font-size: 48px;
+    }
+
+    .contact__arrow {
+        display: none;
+    }
+
+    .contact__form-wrapper {
+        max-width: 100%;
+    }
+
+    .contact__sticker {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 120px;
+        height: 120px;
+    }
+
+    .contact__submit {
+        width: 120px;
+        height: 100px;
+    }
+
+    .contact__footer-top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .contact__footer-copyright {
+        align-self: flex-end;
+    }
+
+    .contact__footer-links {
+        justify-content: center;
+        gap: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact {
+        padding: 48px 20px;
+    }
+}

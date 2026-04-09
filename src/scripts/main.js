@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	initMobileMenu();
 	initPeelOff();
 	initFloatingCard();
+	initContactForm();
 });
 
 /**
@@ -43,7 +44,7 @@ function animateOutline(outline, target) {
  * so the native pointer cursor is visible.
  */
 function setupHoverTargets(dot, outline) {
-	const targets = document.querySelectorAll('a, button, [role="button"], [onclick], .navbar__logo, .skills__peel-off, .testimonials__card');
+	const targets = document.querySelectorAll('a, button, [role="button"], [onclick], .navbar__logo, .skills__peel-off, .testimonials__card, .contact__submit, .contact__input, .contact__checkbox, .contact__privacy-link');
 	targets.forEach((el) => {
 		el.addEventListener('mouseenter', () => {
 			outline.classList.add('cursor-outline--hover');
@@ -324,4 +325,18 @@ function initFloatingCard() {
 	startFloatLoop(img, state);
 	container.addEventListener('mouseenter', () => handleFloatEnter(img, state));
 	container.addEventListener('mouseleave', () => handleFloatLeave(img, state));
+}
+
+/* ========== CONTACT FORM ========== */
+
+/**
+ * Enables or disables the submit button based on the privacy checkbox state.
+ */
+function initContactForm() {
+	const checkbox = document.getElementById('contact-privacy');
+	const submit = document.querySelector('.contact__submit');
+	if (!checkbox || !submit) return;
+	checkbox.addEventListener('change', () => {
+		submit.disabled = !checkbox.checked;
+	});
 }
