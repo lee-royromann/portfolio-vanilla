@@ -83,6 +83,17 @@ body {
     cursor: none;
 }
 
+a,
+button,
+[role="button"],
+[onclick],
+input[type="submit"],
+label[for],
+.navbar__logo,
+.skills__peel-off {
+    cursor: pointer !important;
+}
+
 /* ---------- Custom Cursor ---------- */
 
 .cursor-dot {
@@ -119,6 +130,10 @@ body {
 }
 
 .cursor-outline--hover {
+    opacity: 0;
+}
+
+.cursor-dot--hover {
     opacity: 0;
 }
 

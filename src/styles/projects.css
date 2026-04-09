@@ -58,6 +58,7 @@
     width: 240px;
     height: 20px;
     margin-top: 5px;
+    animation: line-draw 6s ease-in-out infinite;
 }
 
 .projects__description {
@@ -89,6 +90,8 @@
 
 .projects__card-image {
     position: relative;
+    overflow: hidden;
+    border-radius: 20px;
 }
 
 .projects__card-img {
@@ -96,6 +99,84 @@
     height: auto;
     display: block;
     border-radius: 20px;
+    transition: transform 0.3s ease;
+    transform-origin: center center;
+}
+
+.projects__card-image:hover .projects__card-img {
+    transform: scale(1.1);
+}
+
+/* ---------- Floating Animation (Join) ---------- */
+
+.projects__card-image--float .projects__card-img {
+    transition: transform 0.3s ease;
+    transform-origin: top center;
+}
+
+/* ---------- Bottom Gradient Overlay ---------- */
+
+.projects__card-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+    border-radius: 0 0 20px 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.projects__card-image:hover::after {
+    opacity: 1;
+}
+
+/* ---------- Project Details Button ---------- */
+
+.projects__card-btn {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 24px;
+    background-color: transparent;
+    border: 1px solid var(--color-white);
+    border-radius: 100px;
+    color: var(--color-white);
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 120%;
+    box-shadow: 2px 4px 0px 0px var(--color-white);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease, background-color 0.3s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.projects__card-image:hover .projects__card-btn {
+    opacity: 1;
+}
+
+.projects__card-btn:hover {
+    background-color: var(--color-orange);
+}
+
+.projects__card-btn:active {
+    background-color: var(--color-orange);
+    box-shadow: 0 0 0 0 var(--color-white);
+    transform: translateY(4px);
+}
+
+/* ---------- Mobile Button (below text) ---------- */
+
+.projects__card-btn--mobile {
+    display: none;
 }
 
 .projects__sticker {
@@ -165,11 +246,78 @@
     .projects__layout {
         flex-direction: column;
         align-items: center;
+        gap: 32px;
     }
 
     .projects__row {
         flex-direction: column;
         align-items: center;
+        margin-top: 42px;
+        gap: 42px;
+    }
+
+    .projects__card-image:hover .projects__card-img {
+        transform: none;
+    }
+
+    .projects__card-image::after {
+        display: none;
+    }
+
+    .projects__card-image .projects__card-btn {
+        display: none;
+    }
+
+    .projects__card-btn--mobile {
+        display: inline-flex;
+        position: static;
+        align-self: flex-end;
+        margin-top: 24px;
+        padding: 9px 24px;
+        background-color: var(--color-white);
+        border: 1px solid #0E1013;
+        border-radius: 100px;
+        color: #0E1013;
+        font-family: 'Bricolage Grotesque', sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 120%;
+        box-shadow: 2px 4px 0px 0px #0E1013;
+        opacity: 1;
+        cursor: pointer;
+        transition: background-color 0.3s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .projects__card-btn--mobile:hover {
+        background-color: var(--color-orange);
+        color: var(--color-white);
+    }
+
+    .projects__card-btn--mobile:active {
+        background-color: var(--color-orange);
+        box-shadow: 0 0 0 0 #0E1013;
+        transform: translateY(4px);
+    }
+
+    .projects__card-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .projects__subtitle {
+        font-size: 18px;
+    }
+
+    .projects__title {
+        font-size: 48px;
+    }
+
+    .projects__title-container {
+        width: fit-content;
+    }
+
+    .projects__title-line {
+        width: 100%;
     }
 }
 
