@@ -6,6 +6,9 @@
     <title>Lee-Roy Romann</title>
     <link rel="icon" type="image/png" href="./src/assets/logos/favicon.png">
 
+    <link rel="preload" as="image" type="image/webp" href="./src/assets/img/1_background/hero.webp">
+    <link rel="preload" as="image" type="image/webp" href="./src/assets/img/6_photo/lee_grey.webp">
+
     <link rel="stylesheet" href="./src/styles/fonts.css">
     <link rel="stylesheet" href="./src/styles/main.css">
     <link rel="stylesheet" href="./src/styles/navbar.css">
@@ -26,7 +29,7 @@
     <div class="cursor-outline"></div>
 
     <nav class="navbar">
-        <img class="navbar__logo" src="./src/assets/logos/lee-roy.png" alt="Logo"/>
+        <img class="navbar__logo" src="./src/assets/logos/lee-roy.webp" alt="Logo"/>
 
         <button class="navbar__burger" aria-label="Menu">
             <span class="navbar__burger-line"></span>
@@ -35,7 +38,7 @@
         </button>
 
         <div class="navbar__menu">
-            <img class="navbar__menu-logo" src="./src/assets/logos/lee-roy.png" alt="Logo"/>
+            <img class="navbar__menu-logo" src="./src/assets/logos/lee-roy.webp" alt="Logo"/>
 
             <button class="navbar__close" aria-label="Close menu">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -46,28 +49,28 @@
             <a class="navbar__link navbar__link--about" href="#about">
                 <span data-lang-key="navbar.link.about">About me</span>
                 <img class="navbar__link-line" 
-                    src="./src/assets/img/0_drawn_lines/0_header/line_1.png"
+                    src="./src/assets/img/0_drawn_lines/0_header/line_1.webp"
                     alt="About me" />
             </a>
 
             <a class="navbar__link navbar__link--skills" href="#skills">
                 <span data-lang-key="navbar.link.skills">Skills</span>
                 <img class="navbar__link-line" 
-                    src="./src/assets/img/0_drawn_lines/0_header/line_2.png"
+                    src="./src/assets/img/0_drawn_lines/0_header/line_2.webp"
                     alt="Skills" />
             </a>
 
             <a class="navbar__link navbar__link--projects" href="#projects">
                 <span data-lang-key="navbar.link.projects">Projects</span>
                 <img class="navbar__link-line" 
-                    src="./src/assets/img/0_drawn_lines/0_header/line_4.png"
+                    src="./src/assets/img/0_drawn_lines/0_header/line_4.webp"
                     alt="Projects" />
             </a>
 
             <a class="navbar__link navbar__link--contact" href="#contact">
                 <span data-lang-key="navbar.link.contact">Contact</span>
                 <img class="navbar__link-line"
-                    src="./src/assets/img/0_drawn_lines/0_header/line_3.png"
+                    src="./src/assets/img/0_drawn_lines/0_header/line_3.webp"
                     alt="Contact" />
             </a>
 
@@ -75,7 +78,7 @@
                 <span class="navbar__lang navbar__lang--left" onclick="setLang('en')">
                     <span>EN</span>
                     <img class="navbar__lang-rect navbar__lang-rect--left"
-                        src="./src/assets/img/0_drawn_lines/0_header/rectangle.png"
+                        src="./src/assets/img/0_drawn_lines/0_header/rectangle.webp"
                         alt="" />
                 </span>
 
@@ -86,7 +89,7 @@
                 <span class="navbar__lang navbar__lang--right navbar__lang--active" onclick="setLang('de')">
                     <span>DE</span>
                     <img class="navbar__lang-rect navbar__lang-rect--right"
-                        src="./src/assets/img/0_drawn_lines/0_header/rectangle.png"
+                        src="./src/assets/img/0_drawn_lines/0_header/rectangle.webp"
                         alt="" />
                 </span>
             </div>
@@ -145,8 +148,8 @@
             <div class="hero__polaroid">
 
                 <div class="hero__polaroid-photo">
-                    <img class="hero__polaroid-photo-img hero__polaroid-photo-img--default" src="./src/assets/img/6_photo/lee_grey.png" alt="Lee-Roy portrait in grayscale" />
-                    <img class="hero__polaroid-photo-img hero__polaroid-photo-img--hover" src="./src/assets/img/6_photo/lee_default.jpeg" alt="Lee-Roy portrait in color" />
+                    <img class="hero__polaroid-photo-img hero__polaroid-photo-img--default" src="./src/assets/img/6_photo/lee_grey.webp" alt="Lee-Roy portrait in grayscale" fetchpriority="high" />
+                    <img class="hero__polaroid-photo-img hero__polaroid-photo-img--hover" src="./src/assets/img/6_photo/lee_default.webp" alt="Lee-Roy portrait in color" fetchpriority="high" />
                 </div>
 
                 <div class="hero__polaroid-caption" aria-hidden="true">
@@ -169,25 +172,25 @@
     <section class="about" id="about" data-cursor-dark>
         <div class="about__papers">
             <div class="about__paper about__paper--yellow">
-                <img class="about__paper-bg" src="./src/assets/img/2_ripped_paper/ripped_paper_yellow.png" alt="" />
+                <img class="about__paper-bg" src="./src/assets/img/2_ripped_paper/ripped_paper_yellow.webp" alt="" loading="lazy" />
                 <div class="about__paper-content">
-                    <img class="about__paper-icon" src="./src/assets/icons/about_me/location.svg" alt="" />
+                    <img class="about__paper-icon" src="./src/assets/icons/about_me/location.svg" alt="" loading="lazy" />
                     <span class="about__paper-text" data-lang-key="about.paper.location">Based in Bern</span>
                 </div>
             </div>
 
             <div class="about__paper about__paper--blue">
-                <img class="about__paper-bg" src="./src/assets/img/2_ripped_paper/ripped_paper_blue.png" alt="" />
+                <img class="about__paper-bg" src="./src/assets/img/2_ripped_paper/ripped_paper_blue.webp" alt="" loading="lazy" />
                 <div class="about__paper-content">
-                    <img class="about__paper-icon" src="./src/assets/icons/about_me/relocation.svg" alt="" />
+                    <img class="about__paper-icon" src="./src/assets/icons/about_me/relocation.svg" alt="" loading="lazy" />
                     <span class="about__paper-text" data-lang-key="about.paper.relocation">Open to relocate</span>
                 </div>
             </div>
 
             <div class="about__paper about__paper--orange">
-                <img class="about__paper-bg" src="./src/assets/img/2_ripped_paper/ripped_paper_orange.png" alt="" />
+                <img class="about__paper-bg" src="./src/assets/img/2_ripped_paper/ripped_paper_orange.webp" alt="" loading="lazy" />
                 <div class="about__paper-content">
-                    <img class="about__paper-icon" src="./src/assets/icons/about_me/remote.svg" alt="" />
+                    <img class="about__paper-icon" src="./src/assets/icons/about_me/remote.svg" alt="" loading="lazy" />
                     <span class="about__paper-text" data-lang-key="about.paper.remote">Open to work remote</span>
                 </div>
             </div>
@@ -197,7 +200,7 @@
             <span class="about__subtitle" data-lang-key="about.subtitle">WHO'S LEE-ROY?</span>
             <div class="about__title-wrapper">
                 <h2 class="about__title" data-lang-key="about.title">About me</h2>
-                <img class="about__title-line" src="./src/assets/img/0_drawn_lines/1_about_me/Color option 1.png" alt="" />
+                <img class="about__title-line" src="./src/assets/img/0_drawn_lines/1_about_me/Color option 1.webp" alt="" loading="lazy" />
             </div>
 
             <p class="about__text" data-lang-key="about.text">Hey there, I'm Lee-Roy. I'm a frontend developer who loves turning ideas into clean, interactive web experiences. What drives me is the moment when design and code come together seamlessly, building interfaces that not only look great but feel intuitive to use. Every project is a chance to push my skills further and find that perfect balance between creativity and performance.</p>
@@ -217,13 +220,13 @@
                     <div class="skills__title-container">
                         <h2 class="skills__title" data-lang-key="skills.title">Skill set</h2>
                         <div class="skills__title-circle-wrapper">
-                            <img class="skills__title-circle" src="./src/assets/img/0_drawn_lines/2_skills/color_option_1.png" alt="" />
+                            <img class="skills__title-circle" src="./src/assets/img/0_drawn_lines/2_skills/color_option_1.webp" alt="" loading="lazy" />
                         </div>
                     </div>
                 </div>
 
                 <div class="skills__description">
-                    <img class="skills__description-bg" src="./src/assets/img/2_ripped_paper/ripped_paper_skills.png" alt="" />
+                    <img class="skills__description-bg" src="./src/assets/img/2_ripped_paper/ripped_paper_skills.webp" alt="" loading="lazy" />
                     <p class="skills__description-text" data-lang-key="skills.description">Across projects, I gained hands-on frontend experience, turning concepts into responsive interfaces, collaborating in structured workflows, and refining my development approach.</p>
                 </div>
             </div>
@@ -232,66 +235,66 @@
             <div class="skills__bottom">
                 <div class="skills__grid">
                     <div class="skills__item">
-                        <img class="skills__icon" src="./src/assets/icons/skills/frontend/html.svg" alt="HTML" />
+                        <img class="skills__icon" src="./src/assets/icons/skills/frontend/html.svg" alt="HTML" loading="lazy" />
                         <span class="skills__label">HTML</span>
                     </div>
                     <div class="skills__item">
-                        <img class="skills__icon" src="./src/assets/icons/skills/frontend/css.svg" alt="CSS" />
+                        <img class="skills__icon" src="./src/assets/icons/skills/frontend/css.svg" alt="CSS" loading="lazy" />
                         <span class="skills__label">CSS</span>
                     </div>
                     <div class="skills__item">
-                        <img class="skills__icon" src="./src/assets/icons/skills/frontend/javascript.svg" alt="JavaScript" />
+                        <img class="skills__icon" src="./src/assets/icons/skills/frontend/javascript.svg" alt="JavaScript" loading="lazy" />
                         <span class="skills__label">JavaScript</span>
                     </div>
                     <div class="skills__item">
-                        <img class="skills__icon" src="./src/assets/icons/skills/frontend/typescript.svg" alt="TypeScript" />
+                        <img class="skills__icon" src="./src/assets/icons/skills/frontend/typescript.svg" alt="TypeScript" loading="lazy" />
                         <span class="skills__label">TypeScript</span>
                     </div>
                     <div class="skills__item">
-                        <img class="skills__icon" src="./src/assets/icons/skills/frontend/angular.svg" alt="Angular" />
+                        <img class="skills__icon" src="./src/assets/icons/skills/frontend/angular.svg" alt="Angular" loading="lazy" />
                         <span class="skills__label">Angular</span>
                     </div>
                     <div class="skills__item">
-                        <img class="skills__icon" src="./src/assets/icons/skills/frontend/firebase.svg" alt="Firebase" />
+                        <img class="skills__icon" src="./src/assets/icons/skills/frontend/firebase.svg" alt="Firebase" loading="lazy" />
                         <span class="skills__label">Firebase</span>
                     </div>
                     <div class="skills__item">
-                        <img class="skills__icon" src="./src/assets/icons/skills/frontend/git.svg" alt="Git" />
+                        <img class="skills__icon" src="./src/assets/icons/skills/frontend/git.svg" alt="Git" loading="lazy" />
                         <span class="skills__label">Git</span>
                     </div>
                     <div class="skills__item">
-                        <img class="skills__icon" src="./src/assets/icons/skills/frontend/rest_api.svg" alt="REST-API" />
+                        <img class="skills__icon" src="./src/assets/icons/skills/frontend/rest_api.svg" alt="REST-API" loading="lazy" />
                         <span class="skills__label">REST-API</span>
                     </div>
                     <div class="skills__item">
-                        <img class="skills__icon" src="./src/assets/icons/skills/frontend/scrum.svg" alt="Scrum" />
+                        <img class="skills__icon" src="./src/assets/icons/skills/frontend/scrum.svg" alt="Scrum" loading="lazy" />
                         <span class="skills__label">Scrum</span>
                     </div>
                     <div class="skills__item">
-                        <img class="skills__icon" src="./src/assets/icons/skills/frontend/material_design.svg" alt="Material Design" />
+                        <img class="skills__icon" src="./src/assets/icons/skills/frontend/material_design.svg" alt="Material Design" loading="lazy" />
                         <span class="skills__label">Material Design</span>
                     </div>
                 </div>
 
                 <div class="skills__peel-off">
-                    <img class="skills__peel-img skills__peel-img--final" src="./src/assets/img/3_stickers/1_peel_off/final.png" alt="" />
+                    <img class="skills__peel-img skills__peel-img--final" src="./src/assets/img/3_stickers/1_peel_off/final.webp" alt="" loading="lazy" />
                     <div class="skills__peel-content">
                         <p class="skills__peel-title" data-lang-key="skills.peel.title">Also, I'm interested in diving into:</p>
                         <div class="skills__peel-icons">
                             <div class="skills__peel-item">
-                                <img class="skills__peel-icon" src="./src/assets/icons/skills/backend/postgres.svg" alt="Postgres" />
+                                <img class="skills__peel-icon" src="./src/assets/icons/skills/backend/postgres.svg" alt="Postgres" loading="lazy" />
                                 <span class="skills__peel-label">Postgres</span>
                             </div>
                             <div class="skills__peel-item">
-                                <img class="skills__peel-icon" src="./src/assets/icons/skills/backend/docker.svg" alt="Docker" />
+                                <img class="skills__peel-icon" src="./src/assets/icons/skills/backend/docker.svg" alt="Docker" loading="lazy" />
                                 <span class="skills__peel-label">Docker</span>
                             </div>
                         </div>
                     </div>
-                    <img class="skills__peel-img skills__peel-img--transition" src="./src/assets/img/3_stickers/1_peel_off/transition.png" alt="" />
-                    <img class="skills__peel-img skills__peel-img--default" src="./src/assets/img/3_stickers/1_peel_off/default.png" alt="Pull to peel sticker" />
+                    <img class="skills__peel-img skills__peel-img--transition" src="./src/assets/img/3_stickers/1_peel_off/transition.webp" alt="" loading="lazy" />
+                    <img class="skills__peel-img skills__peel-img--default" src="./src/assets/img/3_stickers/1_peel_off/default.webp" alt="Pull to peel sticker" loading="lazy" />
                     <div class="skills__peel-default-content">
-                        <img class="skills__peel-arrow" src="./src/assets/img/3_stickers/1_peel_off/arrow.png" alt="" />
+                        <img class="skills__peel-arrow" src="./src/assets/img/3_stickers/1_peel_off/arrow.webp" alt="" loading="lazy" />
                         <span class="skills__peel-text">Pull to<br>peel</span>
                     </div>
                 </div>
@@ -308,7 +311,7 @@
                 <span class="projects__subtitle">MY CRAFT</span>
                 <div class="projects__title-container">
                     <h2 class="projects__title">Projects</h2>
-                    <img class="projects__title-line" src="./src/assets/img/0_drawn_lines/3_projects/underline.png" alt="" />
+                    <img class="projects__title-line" src="./src/assets/img/0_drawn_lines/3_projects/underline.webp" alt="" loading="lazy" />
                 </div>
                 <p class="projects__description">Encourage people to take a look and interact with your projects. Highlight your approach to creating responsive, user-friendly projects with efficient code.</p>
             </div>
@@ -316,8 +319,8 @@
             <!-- Right: Featured Project -->
             <div class="projects__card">
                 <div class="projects__card-image projects__card-image--float">
-                    <img class="projects__card-img" src="./src/assets/img/4_projects/laptop.webp" alt="Join project preview" />
-                    <img class="projects__sticker" src="./src/assets/img/4_projects/sticker.png" alt="" />
+                    <img class="projects__card-img" src="./src/assets/img/4_projects/laptop.webp" alt="Join project preview" loading="lazy" />
+                    <img class="projects__sticker" src="./src/assets/img/4_projects/sticker.webp" alt="" loading="lazy" />
                     <a class="projects__card-btn" href="#">Project details</a>
                 </div>
                 <div class="projects__card-content">
@@ -334,7 +337,7 @@
             <!-- Left: El Pollo Loco -->
             <div class="projects__card">
                 <div class="projects__card-image">
-                    <img class="projects__card-img" src="./src/assets/img/4_projects/el_pollo_loco.webp" alt="El Pollo Loco project preview" />
+                    <img class="projects__card-img" src="./src/assets/img/4_projects/el_pollo_loco.webp" alt="El Pollo Loco project preview" loading="lazy" />
                     <a class="projects__card-btn" href="#">Project details</a>
                 </div>
                 <div class="projects__card-content">
@@ -347,7 +350,7 @@
             <!-- Right: DABubble -->
             <div class="projects__card">
                 <div class="projects__card-image">
-                    <img class="projects__card-img" src="./src/assets/img/4_projects/da_bubble.jpg" alt="DABubble project preview" />
+                    <img class="projects__card-img" src="./src/assets/img/4_projects/da_bubble.webp" alt="DABubble project preview" loading="lazy" />
                     <a class="projects__card-btn" href="#">Project details</a>
                 </div>
                 <div class="projects__card-content">
@@ -363,7 +366,7 @@
     <section class="testimonials" data-cursor-dark>
         <div class="testimonials__header">
             <div class="testimonials__label">
-                <img class="testimonials__arrow" src="./src/assets/img/0_drawn_lines/4_testimonials/arrow_curved_blue.png" alt="" />
+                <img class="testimonials__arrow" src="./src/assets/img/0_drawn_lines/4_testimonials/arrow_curved_blue.webp" alt="" loading="lazy" />
                 <span class="testimonials__subtitle">IN THEIR WORDS:</span>
             </div>
             <h2 class="testimonials__title">Colleagues' Thoughts</h2>
@@ -372,7 +375,7 @@
         <div class="testimonials__cards">
             <!-- Left card -->
             <div class="testimonials__card testimonials__card--left">
-                <img class="testimonials__card-bg" src="./src/assets/img/3_stickers/2_testimonials/card_paper_a.png" alt="" />
+                <img class="testimonials__card-bg" src="./src/assets/img/3_stickers/2_testimonials/card_paper_a.webp" alt="" loading="lazy" />
                 <div class="testimonials__card-content">
                     <p class="testimonials__quote">Karl really kept the team together with his great organization and clear communication. We wouldn't have got this far without his commitment.</p>
                     <div class="testimonials__card-footer">
@@ -381,7 +384,7 @@
                             <span class="testimonials__role">Frontend Developer</span>
                         </div>
                         <a class="testimonials__profile" href="#" target="_blank" rel="noopener">
-                            <img class="testimonials__linkedin" src="./src/assets/icons/socials/linkedin.svg" alt="LinkedIn" />
+                            <img class="testimonials__linkedin" src="./src/assets/icons/socials/linkedin.svg" alt="LinkedIn" loading="lazy" />
                             <span>Profile</span>
                         </a>
                     </div>
@@ -390,7 +393,7 @@
 
             <!-- Center card -->
             <div class="testimonials__card testimonials__card--center">
-                <img class="testimonials__card-bg" src="./src/assets/img/3_stickers/2_testimonials/card_paper_b.png" alt="" />
+                <img class="testimonials__card-bg" src="./src/assets/img/3_stickers/2_testimonials/card_paper_b.webp" alt="" loading="lazy" />
                 <div class="testimonials__card-content">
                     <p class="testimonials__quote">It was a pleasure to work with Karl. He knows how to motivate and encourage team members to deliver their best work possible, always adding new ideas to every brainstorm. Regarding the well-being of others, he was always present and willing to reach out and help others, with a great sense of humor as well.</p>
                     <div class="testimonials__card-footer">
@@ -399,7 +402,7 @@
                             <span class="testimonials__role">Frontend Developer</span>
                         </div>
                         <a class="testimonials__profile" href="#" target="_blank" rel="noopener">
-                            <img class="testimonials__linkedin" src="./src/assets/icons/socials/linkedin.svg" alt="LinkedIn" />
+                            <img class="testimonials__linkedin" src="./src/assets/icons/socials/linkedin.svg" alt="LinkedIn" loading="lazy" />
                             <span>Profile</span>
                         </a>
                     </div>
@@ -408,7 +411,7 @@
 
             <!-- Right card -->
             <div class="testimonials__card testimonials__card--right">
-                <img class="testimonials__card-bg" src="./src/assets/img/3_stickers/2_testimonials/card_paper_a.png" alt="" />
+                <img class="testimonials__card-bg" src="./src/assets/img/3_stickers/2_testimonials/card_paper_a.webp" alt="" loading="lazy" />
                 <div class="testimonials__card-content">
                     <p class="testimonials__quote">Karl was an outstanding team colleague at DA. His positive attitude and willingness to take on challenges made a significant contribution to us achieving our goals.</p>
                     <div class="testimonials__card-footer">
@@ -417,7 +420,7 @@
                             <span class="testimonials__role">Developer</span>
                         </div>
                         <a class="testimonials__profile" href="#" target="_blank" rel="noopener">
-                            <img class="testimonials__linkedin" src="./src/assets/icons/socials/linkedin.svg" alt="LinkedIn" />
+                            <img class="testimonials__linkedin" src="./src/assets/icons/socials/linkedin.svg" alt="LinkedIn" loading="lazy" />
                             <span>Profile</span>
                         </a>
                     </div>
@@ -428,7 +431,7 @@
 
     <!-- ==================== CONTACT ==================== -->
     <section class="contact">
-        <img class="contact__bg" src="./src/assets/img/1_background/contact.png" alt="" />
+        <img class="contact__bg" src="./src/assets/img/1_background/contact.webp" alt="" loading="lazy" />
 
         <div class="contact__content">
             <!-- Left column -->
@@ -441,13 +444,13 @@
                     <p>Encourage people to contact you and describe what role you are interested in. Express confidence in your ability to make a meaningful contribution to a team through your expertise and enthusiasm for improving your skills.</p>
                     <p>Show interest in contributing to a new project, while highlighting the value and skills you can bring to the table.</p>
                 </div>
-                <img class="contact__arrow" src="./src/assets/img/0_drawn_lines/5_contact/arrow_right_wavy.png" alt="" />
+                <img class="contact__arrow" src="./src/assets/img/0_drawn_lines/5_contact/arrow_right_wavy.webp" alt="" loading="lazy" />
             </div>
 
             <!-- Right column -->
             <div class="contact__form-wrapper">
                 <div class="contact__sticker">
-                    <img class="contact__sticker-bg" src="./src/assets/img/3_stickers/0_round/color_orange.png" alt="" />
+                    <img class="contact__sticker-bg" src="./src/assets/img/3_stickers/0_round/color_orange.webp" alt="" loading="lazy" />
                     <svg class="contact__sticker-text" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <path id="circlePath" d="M 100,100 m -80,0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" />
@@ -456,7 +459,7 @@
                             <textPath href="#circlePath" startOffset="0%">Lee-Roy Romann - Frontend Developer - Lee-Roy Romann - Frontend Developer -</textPath>
                         </text>
                     </svg>
-                    <img class="contact__sticker-logo" src="./src/assets/logos/lee-roy.png" alt="Logo" />
+                    <img class="contact__sticker-logo" src="./src/assets/logos/lee-roy.webp" alt="Logo" loading="lazy" />
                 </div>
 
                 <form class="contact__form" action="#" method="POST">
@@ -487,7 +490,7 @@
         <!-- Footer -->
         <footer class="contact__footer">
             <div class="contact__footer-top">
-                <img class="contact__footer-logo" src="./src/assets/logos/lee-roy.png" alt="Lee-Roy Romann Logo" />
+                <img class="contact__footer-logo" src="./src/assets/logos/lee-roy.webp" alt="Lee-Roy Romann Logo" loading="lazy" />
                 <span class="contact__footer-copyright">&copy; Lee-Roy Romann 2026</span>
             </div>
             <nav class="contact__footer-links">
