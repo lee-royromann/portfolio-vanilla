@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	initPeelOff();
 	initFloatingCard();
 	initContactForm();
+	initGitHubIconRoll();
 });
 
 /**
@@ -332,11 +333,137 @@ function initFloatingCard() {
 /**
  * Enables or disables the submit button based on the privacy checkbox state.
  */
-function initContactForm() {
-	const checkbox = document.getElementById('contact-privacy');
-	const submit = document.querySelector('.contact__submit');
-	if (!checkbox || !submit) return;
+const FIELD_ERROR_MESSAGES = {
+	'contact-name': 'Oops! it seems your name is missing',
+	'contact-email': 'Hoppla! your email is required',
+	'contact-message': 'What do you need to develop?'
+};
+
+const defaultPlaceholders = {};
+const fieldTouched = {};
+
+/**
+ * Displays an error message as placeholder and adds the error CSS class.
+ * @param {HTMLElement} field - The input or textarea element.
+ * @param {string} fieldId - The element's ID used to look up the error message.
+ */
+function showFieldError(field, fieldId) {
+	field.placeholder = FIELD_ERROR_MESSAGES[fieldId];
+	field.classList.add('contact__input--error');
+}
+
+/**
+ * Restores the original placeholder and removes the error CSS class.
+ * @param {HTMLElement} field - The input or textarea element.
+ * @param {string} fieldId - The element's ID used to look up the original placeholder.
+ */
+function clearFieldError(field, fieldId) {
+	field.placeholder = defaultPlaceholders[fieldId];
+	field.classList.remove('contact__input--error');
+}
+
+/**
+ * Registers focus, blur, and input listeners for live field validation.
+ * Shows an error on blur if the field was touched but left empty.
+ * Clears the error as soon as the user starts typing.
+ * @param {HTMLElement} field - The input or textarea element.
+ * @param {string} fieldId - The element's ID.
+ */
+function addFieldValidationListeners(field, fieldId) {
+	field.addEventListener('focus', () => {
+		fieldTouched[fieldId] = true;
+	});
+	field.addEventListener('blur', () => {
+		if (fieldTouched[fieldId] && !field.value.trim()) showFieldError(field, fieldId);
+	});
+	field.addEventListener('input', () => {
+		if (field.value.trim()) clearFieldError(field, fieldId);
+	});
+}
+
+/**
+ * Initializes validation for all contact form fields.
+ * Stores each field's default placeholder and attaches validation listeners.
+ */
+function setupFieldValidation() {
+	Object.keys(FIELD_ERROR_MESSAGES).forEach(fieldId => {
+		const field = document.getElementById(fieldId);
+		if (!field) return;
+		defaultPlaceholders[fieldId] = field.placeholder;
+		fieldTouched[fieldId] = false;
+		addFieldValidationListeners(field, fieldId);
+	});
+}
+
+/**
+ * Validates all contact form fields at once (used on submit).
+ * Marks every empty field as touched and shows its error message.
+ * @returns {boolean} True if at least one field is invalid.
+ */
+function validateAllFields() {
+	let hasError = false;
+	Object.keys(FIELD_ERROR_MESSAGES).forEach(fieldId => {
+		const field = document.getElementById(fieldId);
+		if (!field) return;
+		fieldTouched[fieldId] = true;
+		if (!field.value.trim()) {
+			showFieldError(field, fieldId);
+			hasError = true;
+		} else {
+			clearFieldError(field, fieldId);
+		}
+	});
+	return hasError;
+}
+
+/**
+ * Toggles the privacy hint visibility when the checkbox is unchecked
+ * after having been checked at least once.
+ * @param {HTMLElement} checkbox - The privacy checkbox element.
+ * @param {HTMLElement} submitBtn - The submit button to enable/disable.
+ */
+function handlePrivacyToggle(checkbox, submitBtn) {
+	let wasCheckedOnce = false;
+	const privacyHint = document.querySelector('.contact__privacy-hint');
 	checkbox.addEventListener('change', () => {
-		submit.disabled = !checkbox.checked;
+		submitBtn.disabled = !checkbox.checked;
+		if (checkbox.checked) wasCheckedOnce = true;
+		if (privacyHint) privacyHint.style.visibility = (!checkbox.checked && wasCheckedOnce) ? 'visible' : 'hidden';
+	});
+}
+
+/**
+ * Initializes the contact form: enables the submit button via privacy checkbox
+ * and sets up field validation with error messages on blur and submit.
+ */
+function initContactForm() {
+	const privacyCheckbox = document.getElementById('contact-privacy');
+	const submitButton = document.querySelector('.contact__submit');
+	const contactForm = document.querySelector('.contact__form');
+	if (!privacyCheckbox || !submitButton || !contactForm) return;
+	handlePrivacyToggle(privacyCheckbox, submitButton);
+	setupFieldValidation();
+	contactForm.addEventListener('submit', (e) => {
+		if (validateAllFields()) e.preventDefault();
+	});
+}
+
+/**
+ * Initializes the icon-roll hover effect for footer links (GitHub, LinkedIn).
+ * Adds and removes CSS classes on mouseenter/mouseleave for the roll animation.
+ */
+function initGitHubIconRoll() {
+	document.querySelectorAll('.contact__icon-roll-wrapper').forEach((wrapper) => {
+		wrapper.addEventListener('mouseenter', () => {
+			wrapper.classList.add('is-hovered');
+			wrapper.classList.remove('is-leaving');
+		});
+		wrapper.addEventListener('mouseleave', () => {
+			wrapper.classList.remove('is-hovered');
+			wrapper.classList.add('is-leaving');
+		});
+		wrapper.addEventListener('animationend', (e) => {
+			if (e.animationName === 'icon-roll-out') wrapper.classList.remove('is-leaving');
+		});
 	});
 }
