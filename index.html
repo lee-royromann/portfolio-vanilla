@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lee-Roy Romann</title>
-    <link rel="icon" type="image/png" href="./src/assets/logos/lee-roy.png">
+    <link rel="icon" type="image/png" href="./src/assets/logos/favicon.png">
 
     <link rel="stylesheet" href="./src/styles/fonts.css">
     <link rel="stylesheet" href="./src/styles/main.css">
@@ -372,7 +372,7 @@
         <div class="testimonials__cards">
             <!-- Left card -->
             <div class="testimonials__card testimonials__card--left">
-                <img class="testimonials__card-bg" src="./src/assets/img/3_stickers/2_testimonials/a.png" alt="" />
+                <img class="testimonials__card-bg" src="./src/assets/img/3_stickers/2_testimonials/card_paper_a.png" alt="" />
                 <div class="testimonials__card-content">
                     <p class="testimonials__quote">Karl really kept the team together with his great organization and clear communication. We wouldn't have got this far without his commitment.</p>
                     <div class="testimonials__card-footer">
@@ -390,7 +390,7 @@
 
             <!-- Center card -->
             <div class="testimonials__card testimonials__card--center">
-                <img class="testimonials__card-bg" src="./src/assets/img/3_stickers/2_testimonials/b.png" alt="" />
+                <img class="testimonials__card-bg" src="./src/assets/img/3_stickers/2_testimonials/card_paper_b.png" alt="" />
                 <div class="testimonials__card-content">
                     <p class="testimonials__quote">It was a pleasure to work with Karl. He knows how to motivate and encourage team members to deliver their best work possible, always adding new ideas to every brainstorm. Regarding the well-being of others, he was always present and willing to reach out and help others, with a great sense of humor as well.</p>
                     <div class="testimonials__card-footer">
@@ -408,7 +408,7 @@
 
             <!-- Right card -->
             <div class="testimonials__card testimonials__card--right">
-                <img class="testimonials__card-bg" src="./src/assets/img/3_stickers/2_testimonials/a.png" alt="" />
+                <img class="testimonials__card-bg" src="./src/assets/img/3_stickers/2_testimonials/card_paper_a.png" alt="" />
                 <div class="testimonials__card-content">
                     <p class="testimonials__quote">Karl was an outstanding team colleague at DA. His positive attitude and willingness to take on challenges made a significant contribution to us achieving our goals.</p>
                     <div class="testimonials__card-footer">
@@ -448,6 +448,14 @@
             <div class="contact__form-wrapper">
                 <div class="contact__sticker">
                     <img class="contact__sticker-bg" src="./src/assets/img/3_stickers/0_round/color_orange.png" alt="" />
+                    <svg class="contact__sticker-text" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <path id="circlePath" d="M 100,100 m -80,0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" />
+                        </defs>
+                        <text>
+                            <textPath href="#circlePath" startOffset="0%">Lee-Roy Romann - Frontend Developer - Lee-Roy Romann - Frontend Developer -</textPath>
+                        </text>
+                    </svg>
                     <img class="contact__sticker-logo" src="./src/assets/logos/lee-roy.png" alt="Logo" />
                 </div>
 
@@ -462,13 +470,14 @@
                     </div>
                     <div class="contact__field">
                         <label class="contact__label" for="contact-message">How can I help you?</label>
-                        <textarea class="contact__input contact__textarea" id="contact-message" name="message" placeholder="Hello Lukas, I am interested in..." required></textarea>
+                        <textarea class="contact__input contact__textarea" id="contact-message" name="message" placeholder="Hello Lee-Roy, I am interested in..." required></textarea>
                     </div>
 
                     <div class="contact__privacy">
                         <input class="contact__checkbox" type="checkbox" id="contact-privacy" required />
                         <label class="contact__privacy-text" for="contact-privacy">I've read the <a class="contact__privacy-link" href="./src/pages/privacy_policy.html">privacy policy</a> and agree to the processing of my data as outlined.</label>
                     </div>
+                    <span class="contact__privacy-hint">Please accept the privacy policy.</span>
 
                     <button class="contact__submit" type="submit" disabled>Send</button>
                 </form>
@@ -483,9 +492,15 @@
             </div>
             <nav class="contact__footer-links">
                 <a class="contact__footer-link" href="./src/pages/legal_notice.html">Legal Notice</a>
-                <a class="contact__footer-link" href="https://github.com/lee-royromann" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a class="contact__footer-link" href="https://www.linkedin.com/in/lee-royromann/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a class="contact__footer-link" href="mailto:lee-roy@romann.ch">Email</a>
+                <div class="contact__icon-roll-wrapper contact__icon-roll-wrapper--github">
+                    <a class="contact__footer-link contact__footer-link--icon-roll" href="https://github.com/lee-royromann" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+                <div class="contact__icon-roll-wrapper contact__icon-roll-wrapper--linkedin">
+                    <a class="contact__footer-link contact__footer-link--icon-roll" href="https://www.linkedin.com/in/lee-royromann/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+                <div class="contact__icon-roll-wrapper contact__icon-roll-wrapper--email">
+                    <a class="contact__footer-link contact__footer-link--icon-roll" href="mailto:lee-roy@romann.ch">Email</a>
+                </div>
             </nav>
         </footer>
     </section>
