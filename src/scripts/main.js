@@ -97,7 +97,7 @@ function handleMouseMove(dot, outline, target) {
  * Only active on devices that support hover (no touch screens).
  */
 function initCustomCursor() {
-	if (!matchMedia('(hover: hover)').matches) return;
+	if (!matchMedia('(pointer: fine) and (hover: hover)').matches) return;
 	const dot = document.querySelector('.cursor-dot');
 	const outline = document.querySelector('.cursor-outline');
 	if (!dot || !outline) return;
@@ -116,16 +116,22 @@ function initCustomCursor() {
  * @param {object} state - Shared scroll state with lastScrollY and locked flag.
  */
 function handleScroll(navbar, state) {
+	const SCROLL_THRESHOLD = 40;
 	const y = window.scrollY;
 	if (state.locked) {
 		state.lastScrollY = y;
 		navbar.classList.toggle('navbar--scrolled', y > 0);
 		return;
 	}
-	if (y > state.lastScrollY && y > 80) navbar.classList.add('navbar--hidden');
-	else navbar.classList.remove('navbar--hidden');
+	const delta = y - state.lastScrollY;
+	if (delta > SCROLL_THRESHOLD && y > 80) {
+		navbar.classList.add('navbar--hidden');
+		state.lastScrollY = y;
+	} else if (delta < -SCROLL_THRESHOLD) {
+		navbar.classList.remove('navbar--hidden');
+		state.lastScrollY = y;
+	}
 	navbar.classList.toggle('navbar--scrolled', y > 0);
-	state.lastScrollY = y;
 }
 
 /**
@@ -155,7 +161,7 @@ function setupNavbarClickAway(navbar, state) {
 			closeMenu(menu);
 			return;
 		}
-		if (!navbar.classList.contains('navbar--hidden')) {
+		if (window.scrollY > 80 && !navbar.classList.contains('navbar--hidden')) {
 			navbar.classList.add('navbar--hidden');
 			state.lastScrollY = window.scrollY;
 		}
