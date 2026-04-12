@@ -434,6 +434,20 @@
         <img class="contact__bg" src="./src/assets/img/1_background/contact.webp" alt="" loading="lazy" />
 
         <div class="contact__content">
+            <!-- Mobile sticker (visible only on mobile) -->
+            <div class="contact__sticker contact__sticker--mobile">
+                <img class="contact__sticker-bg" src="./src/assets/img/3_stickers/0_round/color_orange.webp" alt="" loading="lazy" />
+                <svg class="contact__sticker-text" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <path id="circlePathMobile" d="M 100,100 m -80,0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" />
+                    </defs>
+                    <text>
+                        <textPath href="#circlePathMobile" startOffset="0%">Lee-Roy Romann - Frontend Developer - Lee-Roy Romann - Frontend Developer -</textPath>
+                    </text>
+                </svg>
+                <img class="contact__sticker-logo" src="./src/assets/logos/lee-roy.webp" alt="Logo" loading="lazy" />
+            </div>
+
             <!-- Left column -->
             <div class="contact__info">
                 <div class="contact__header">
@@ -482,7 +496,10 @@
                     </div>
                     <span class="contact__privacy-hint">Please accept the privacy policy.</span>
 
-                    <button class="contact__submit" type="submit" disabled>Send</button>
+                    <div class="contact__submit-row">
+                        <img class="contact__arrow contact__arrow--mobile" src="./src/assets/img/0_drawn_lines/5_contact/arrow_right_wavy.webp" alt="" loading="lazy" />
+                        <button class="contact__submit" type="submit" disabled>Send</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -490,11 +507,14 @@
         <!-- Footer -->
         <footer class="contact__footer">
             <div class="contact__footer-top">
-                <img class="contact__footer-logo" src="./src/assets/logos/lee-roy.webp" alt="Lee-Roy Romann Logo" loading="lazy" />
-                <span class="contact__footer-copyright">&copy; Lee-Roy Romann 2026</span>
+                <div class="contact__footer-top-left">
+                    <img class="contact__footer-logo" src="./src/assets/logos/lee-roy.webp" alt="Lee-Roy Romann Logo" loading="lazy" />
+                    <span class="contact__footer-copyright">&copy; Lee-Roy Romann 2026</span>
+                </div>
+                <a class="contact__footer-link contact__footer-link--legal" href="./src/pages/legal_notice.html">Legal Notice</a>
             </div>
             <nav class="contact__footer-links">
-                <a class="contact__footer-link" href="./src/pages/legal_notice.html">Legal Notice</a>
+                <a class="contact__footer-link contact__footer-link--legal-desktop" href="./src/pages/legal_notice.html">Legal Notice</a>
                 <div class="contact__icon-roll-wrapper contact__icon-roll-wrapper--github">
                     <a class="contact__footer-link contact__footer-link--icon-roll" href="https://github.com/lee-royromann" target="_blank" rel="noopener noreferrer">GitHub</a>
                 </div>
