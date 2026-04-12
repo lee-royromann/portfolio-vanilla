@@ -149,7 +149,13 @@ function lockNavbarScroll(navbar, state) {
  */
 function setupNavbarClickAway(navbar, state) {
 	document.addEventListener('click', (e) => {
-		if (!navbar.contains(e.target) && !navbar.classList.contains('navbar--hidden')) {
+		if (navbar.contains(e.target)) return;
+		const menu = document.querySelector('.navbar__menu');
+		if (menu && menu.classList.contains('is-open')) {
+			closeMenu(menu);
+			return;
+		}
+		if (!navbar.classList.contains('navbar--hidden')) {
 			navbar.classList.add('navbar--hidden');
 			state.lastScrollY = window.scrollY;
 		}
