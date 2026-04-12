@@ -19,6 +19,13 @@ const translations = {
 		"skills.title": "Skill set",
 		"skills.description": "In Projekten sammelte ich praxisnahe Frontend-Erfahrung, übersetzte Konzepte in responsive Interfaces, arbeitete in strukturierten Workflows und schärfte meinen Entwicklungsansatz kontinuierlich.",
 		"skills.peel.title": "Außerdem interessiere ich mich für:",
+		"projects.subtitle": "MEINE ARBEIT",
+		"projects.title": "Projekte",
+		"projects.description": "Wirf einen Blick auf meine Projekte und erlebe sie interaktiv. Mein Fokus liegt auf responsiven, nutzerfreundlichen Anwendungen mit effizientem Code.",
+		"projects.btn": "Projektdetails",
+		"projects.join.text": "Aufgabenmanager nach dem Kanban-Prinzip. Erstelle und organisiere Aufgaben per Drag & Drop, weise Nutzer und Kategorien zu.",
+		"projects.eplc.text": "Ein Jump-and-Run-Spiel auf Basis objektorientierter Programmierung. Hilf Pepe, Münzen und Tabasco-Salsa zu finden, um gegen das verrückte Huhn zu kämpfen.",
+		"projects.dabubble.text": "Diese App ist ein Slack-Klon. Sie revolutioniert Teamkommunikation und Zusammenarbeit mit einer intuitiven Oberfläche, Echtzeit-Nachrichten und einer durchdachten Kanalstruktur.",
 	},
 	en: {
 		"navbar.link.about": "About me",
@@ -40,6 +47,13 @@ const translations = {
 		"skills.title": "Skill set",
 		"skills.description": "Across projects, I gained hands-on frontend experience, turning concepts into responsive interfaces, collaborating in structured workflows, and refining my development approach.",
 		"skills.peel.title": "Also, I'm interested in diving into:",
+		"projects.subtitle": "MY CRAFT",
+		"projects.title": "Projects",
+		"projects.description": "Take a look at my projects and experience them interactively. My focus is on responsive, user-friendly applications with efficient code.",
+		"projects.btn": "Project details",
+		"projects.join.text": "Task manager inspired by the Kanban System. Create and organize tasks using drag and drop functions, assign users and categories.",
+		"projects.eplc.text": "Jump, run and throw game based on object-oriented approach. Help Pepe to find coins and tabasco salsa to fight against the crazy hen.",
+		"projects.dabubble.text": "This App is a Slack Clone App. It revolutionizes team communication and collaboration with its intuitive interface, real-time messaging, and robust channel organization.",
 	},
 };
 
