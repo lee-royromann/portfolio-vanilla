@@ -235,7 +235,7 @@
 
 .hero__polaroid {
     position: absolute;
-    top: 28%;
+    top: 27%;
     right: 4%;
     width: 212px;
     transform: rotate(8deg);
@@ -390,6 +390,7 @@
 
 @media (max-width: 740px) {
     .hero {
+        height: auto;
         min-height: 100vh;
     }
 
@@ -400,7 +401,9 @@
     .hero__content {
         max-width: 100%;
         justify-content: flex-start;
+        height: auto;
         padding-top: 120px;
+        padding-bottom: 90px;
         padding-left: 72px;
         padding-right: 72px;
         margin-left: 0px;

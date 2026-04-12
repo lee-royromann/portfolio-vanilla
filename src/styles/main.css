@@ -152,3 +152,10 @@ label[for],
 .cursor-outline--dark {
     border-color: #0E1013;
 }
+
+@media (pointer: coarse) {
+    .cursor-dot,
+    .cursor-outline {
+        display: none;
+    }
+}
