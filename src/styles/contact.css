@@ -709,6 +709,20 @@
     .contact__footer-links {
         margin-top: 8px;
     }
+
+    .toast {
+        max-width: calc(100vw - 40px);
+        padding: 12px 20px;
+        font-size: 14px;
+        gap: 8px;
+        border-radius: 16px;
+        white-space: nowrap;
+    }
+
+    .toast__icon {
+        width: 18px;
+        height: 18px;
+    }
 }
 
 @media (max-width: 400px) {
