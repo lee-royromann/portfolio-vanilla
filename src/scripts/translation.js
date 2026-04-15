@@ -120,11 +120,11 @@ const translations = {
 };
 
 /**
- * Returns the currently active language from localStorage or falls back to 'de'.
+ * Returns the currently active language from localStorage or falls back to 'en'.
  * @returns {'de'|'en'} The active language code.
  */
 function getStoredLang() {
-	return localStorage.getItem('lang') || 'de';
+	return localStorage.getItem('lang') || 'en';
 }
 
 /**
