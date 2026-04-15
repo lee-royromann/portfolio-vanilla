@@ -451,3 +451,32 @@
         padding-right: 24px;
     }
 }
+
+/* ---------- Small & Short Screens (e.g. iPhone SE) ---------- */
+
+@media (max-width: 375px) and (max-height: 700px) {
+    .hero__content {
+        padding-top: 100px;
+        padding-bottom: 40px;
+    }
+
+    .hero__badge-wrapper {
+        margin-bottom: 12px;
+    }
+
+    .hero__badge {
+        height: 34px;
+        font-size: 16px;
+        padding: 6px 16px;
+    }
+
+    .hero__title {
+        gap: 6px;
+        margin-bottom: 24px;
+    }
+
+    .hero__polaroid {
+        width: 195px;
+        margin-top: 24px;
+    }
+}

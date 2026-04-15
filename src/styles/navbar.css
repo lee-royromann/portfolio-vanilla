@@ -364,3 +364,13 @@
         padding: 20px 24px;
     }
 }
+
+@media (max-width: 375px) and (max-height: 700px) {
+    .navbar {
+        padding: 12px 16px;
+    }
+
+    .navbar__logo {
+        height: 50px;
+    }
+}
