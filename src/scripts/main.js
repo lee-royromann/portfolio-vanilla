@@ -45,16 +45,21 @@ function handleScroll(navbar, state) {
 }
 
 /**
- * Temporarily locks the navbar in visible state after a navigation click.
+ * Hides the navbar after a navigation click once smooth scrolling finishes.
  * @param {HTMLElement} navbar - The navbar element.
  * @param {object} state - Shared scroll state.
  */
 function lockNavbarScroll(navbar, state) {
 	state.locked = true;
-	navbar.classList.remove('navbar--hidden');
 	setTimeout(() => {
-		state.locked = false;
 		state.lastScrollY = window.scrollY;
+		if (window.scrollY > 80) {
+			navbar.classList.add('navbar--hidden');
+		}
+		setTimeout(() => {
+			state.locked = false;
+			state.lastScrollY = window.scrollY;
+		}, 300);
 	}, 800);
 }
 
