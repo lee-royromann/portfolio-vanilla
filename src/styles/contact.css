@@ -460,6 +460,35 @@
     color: var(--color-orange);
 }
 
+.contact__footer-link--legal:hover,
+.contact__footer-link--legal-desktop:hover {
+    color: var(--color-white);
+}
+
+/* ---------- Legal Notice Link Line Animation ---------- */
+
+.contact__footer-link--legal,
+.contact__footer-link--legal-desktop {
+    position: relative;
+}
+
+.contact__footer-link-line {
+    position: absolute;
+    width: 105px;
+    height: 42px;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.3s ease;
+}
+
+.contact__footer-link--legal:hover .contact__footer-link-line,
+.contact__footer-link--legal-desktop:hover .contact__footer-link-line {
+    clip-path: inset(0 0% 0 0);
+}
+
 /* ---------- GitHub Icon Roll ---------- */
 
 /* ---------- Icon Roll (GitHub & LinkedIn) ---------- */
