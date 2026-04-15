@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	initMobileMenu();
 	initPeelOff();
 	initFloatingCard();
-	initContactForm();
+	if (typeof initContactForm === 'function') initContactForm();
 	initGitHubIconRoll();
 });
 
