@@ -378,4 +378,16 @@
     .testimonials__cards {
         margin-top: 50px;
     }
+
+    .testimonials__quote {
+        font-size: 16px;
+    }
+
+    .testimonials__role {
+        font-size: 14px;
+    }
+
+    .testimonials__profile {
+        font-size: 16px;
+    }
 }
