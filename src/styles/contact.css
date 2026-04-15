@@ -407,6 +407,18 @@
     flex-shrink: 0;
 }
 
+.toast__close {
+    background: none;
+    border: none;
+    color: var(--color-white);
+    cursor: pointer;
+    padding: 0;
+    margin-left: 4px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
 /* ========== FOOTER (inside contact) ========== */
 
 .contact__footer {

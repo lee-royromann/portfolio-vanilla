@@ -34,17 +34,23 @@ function showToast(type) {
 		? '<svg class="toast__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 		: '<svg class="toast__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
+	const closeBtn = '<button class="toast__close" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
+
 	const toast = document.createElement('div');
 	toast.className = 'toast' + (type === 'error' ? ' toast--error' : ' toast--success');
-	toast.innerHTML = icon + '<span>' + message + '</span>';
+	toast.innerHTML = icon + '<span>' + message + '</span>' + closeBtn;
 	document.body.appendChild(toast);
+
+	const hideToast = () => {
+		toast.classList.remove('toast--visible');
+		toast.addEventListener('transitionend', () => toast.remove());
+	};
+
+	toast.querySelector('.toast__close').addEventListener('click', hideToast);
 
 	requestAnimationFrame(() => {
 		toast.classList.add('toast--visible');
 	});
 
-	setTimeout(() => {
-		toast.classList.remove('toast--visible');
-		toast.addEventListener('transitionend', () => toast.remove());
-	}, 4000);
+	setTimeout(hideToast, 4000);
 }
