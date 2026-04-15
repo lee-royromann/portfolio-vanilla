@@ -5,6 +5,7 @@
     width: 100%;
     padding: 100px 120px;
     background-color: var(--color-light);
+    scroll-margin-top: -30px;
 }
 
 /* ---------- 2-Column Layout ---------- */
