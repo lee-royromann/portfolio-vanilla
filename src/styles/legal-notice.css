@@ -156,6 +156,7 @@
 
 .legal-notice__footer {
     padding: 40px 120px;
+    margin-top: 0;
 }
 
 .legal-notice__footer .contact__footer-copyright {
@@ -207,7 +208,7 @@
     }
 
     .legal-notice__content {
-        padding: 60px 80px;
+        padding: 60px 80px 0;
     }
 
     .legal-notice__footer {
@@ -240,7 +241,7 @@
     }
 
     .legal-notice__content {
-        padding: 48px 40px;
+        padding: 48px 40px 0;
     }
 
     .legal-notice__footer {
@@ -267,7 +268,7 @@
     }
 
     .legal-notice__content {
-        padding: 40px 24px;
+        padding: 40px 24px 0;
     }
 
     .legal-notice__footer {
@@ -291,7 +292,7 @@
     }
 
     .legal-notice__content {
-        padding: 32px 16px;
+        padding: 32px 16px 0;
     }
 
     .legal-notice__footer {
@@ -314,7 +315,7 @@
     }
 
     .legal-notice__content {
-        padding: 24px 12px;
+        padding: 24px 12px 0;
     }
 
     .legal-notice__footer {
