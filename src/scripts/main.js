@@ -45,13 +45,29 @@ function handleScroll(navbar, state) {
 }
 
 /**
+ * Detects when smooth scrolling has stopped using debounced scroll events.
+ * @param {function} callback - Called once scrolling has fully stopped.
+ */
+function onScrollEnd(callback) {
+	let timer = null;
+	const onScroll = () => {
+		clearTimeout(timer);
+		timer = setTimeout(() => {
+			window.removeEventListener('scroll', onScroll);
+			callback();
+		}, 150);
+	};
+	window.addEventListener('scroll', onScroll, { passive: true });
+}
+
+/**
  * Hides the navbar after a navigation click once smooth scrolling finishes.
  * @param {HTMLElement} navbar - The navbar element.
  * @param {object} state - Shared scroll state.
  */
 function lockNavbarScroll(navbar, state) {
 	state.locked = true;
-	setTimeout(() => {
+	onScrollEnd(() => {
 		state.lastScrollY = window.scrollY;
 		if (window.scrollY > 80) {
 			navbar.classList.add('navbar--hidden');
@@ -60,7 +76,7 @@ function lockNavbarScroll(navbar, state) {
 			state.locked = false;
 			state.lastScrollY = window.scrollY;
 		}, 300);
-	}, 800);
+	});
 }
 
 /**
