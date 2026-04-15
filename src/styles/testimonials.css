@@ -257,11 +257,31 @@
         transform: rotate(4deg);
         margin-top: -4px;
     }
+
+    .testimonials__card-content {
+        padding: 36px 32px;
+    }
 }
 
 @media (max-width: 925px) {
     .testimonials {
         padding: 0 48px 48px;
+    }
+
+    .testimonials__card-content {
+        padding: 28px 24px;
+    }
+
+    .testimonials__quote {
+        font-size: 16px;
+    }
+
+    .testimonials__name {
+        font-size: 18px;
+    }
+
+    .testimonials__role {
+        font-size: 14px;
     }
 }
 
@@ -296,6 +316,10 @@
 }
 
 @media (max-width: 570px) {
+    .testimonials {
+        padding: 0 24px 48px;
+    }
+
     .testimonials__header {
         align-items: flex-end;
     }
@@ -335,6 +359,10 @@
 }
 
 @media (max-width: 400px) {
+    .testimonials {
+        padding: 0 16px 48px;
+    }
+
     .testimonials__title {
         font-size: 36px;
     }

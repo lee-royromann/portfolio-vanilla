@@ -187,11 +187,11 @@
 }
 
 /* Stack vertically: content first, papers below */
-@media (max-width: 980px) {
+@media (max-width: 1045px) {
     .about {
         flex-direction: column;
         align-items: stretch;
-        padding: 40px 40px;
+        padding: 40px 48px;
         gap: 32px;
     }
 
@@ -212,7 +212,7 @@
 /* Tighten spacing for tablets */
 @media (max-width: 740px) {
     .about {
-        padding: 24px 24px;
+        padding: 24px 40px;
         gap: 24px;
     }
 
@@ -266,5 +266,17 @@
 
     .about__paper--yellow .about__paper-content {
         margin-top: -15px;
+    }
+}
+
+@media (max-width: 560px) {
+    .about {
+        padding: 24px 24px;
+    }
+}
+
+@media (max-width: 400px) {
+    .about {
+        padding: 24px 16px;
     }
 }
