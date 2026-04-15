@@ -142,12 +142,12 @@ function rebuildLetterHover(lines) {
 }
 
 /**
- * Translates all elements with a [data-lang-key] attribute to the given language.
- * @param {'de'|'en'} lang - The target language.
+ * Translates all elements with a [data-lang-key] attribute.
+ * Returns an array of elements that need letter-hover re-init.
+ * @param {object} dict - The translation dictionary for the target language.
+ * @returns {Element[]} Elements with [data-letter-hover] that were translated.
  */
-function translatePage(lang) {
-	const dict = translations[lang];
-	if (!dict) return;
+function translateElements(dict) {
 	const letterHoverLines = [];
 	document.querySelectorAll('[data-lang-key]').forEach((el) => {
 		const key = el.dataset.langKey;
@@ -159,11 +159,29 @@ function translatePage(lang) {
 		}
 		if (el.hasAttribute('data-letter-hover')) letterHoverLines.push(el);
 	});
+	return letterHoverLines;
+}
+
+/**
+ * Translates all placeholder attributes via [data-lang-placeholder].
+ * @param {object} dict - The translation dictionary for the target language.
+ */
+function translatePlaceholders(dict) {
 	document.querySelectorAll('[data-lang-placeholder]').forEach((el) => {
 		const key = el.dataset.langPlaceholder;
 		if (dict[key] !== undefined) el.placeholder = dict[key];
 	});
-	rebuildLetterHover(letterHoverLines);
+}
+
+/**
+ * Translates all elements with a [data-lang-key] attribute to the given language.
+ * @param {'de'|'en'} lang - The target language.
+ */
+function translatePage(lang) {
+	const dict = translations[lang];
+	if (!dict) return;
+	rebuildLetterHover(translateElements(dict));
+	translatePlaceholders(dict);
 }
 
 /**
