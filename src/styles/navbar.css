@@ -245,7 +245,7 @@
 
 @media (max-width: 740px) {
     .navbar {
-        padding: 20px 72px;
+        padding: 20px 40px;
     }
 
     .navbar__logo {
@@ -349,9 +349,9 @@
     }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 560px) {
     .navbar {
-        padding: 20px 48px;
+        padding: 20px 24px;
     }
 
     .navbar__menu-logo {
@@ -359,9 +359,9 @@
     }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 400px) {
     .navbar {
-        padding: 20px 24px;
+        padding: 20px 16px;
     }
 }
 
