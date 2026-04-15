@@ -250,7 +250,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: 8px;
     z-index: 3;
     transition: opacity 0.6s ease;
 }

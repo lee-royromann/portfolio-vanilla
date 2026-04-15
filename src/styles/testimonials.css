@@ -333,3 +333,21 @@
         object-fit: fill;
     }
 }
+
+@media (max-width: 400px) {
+    .testimonials__title {
+        font-size: 36px;
+    }
+
+    .testimonials__subtitle {
+        font-size: 16px;
+    }
+
+    .testimonials__arrow {
+        width: 70px;
+    }
+
+    .testimonials__cards {
+        margin-top: 50px;
+    }
+}
