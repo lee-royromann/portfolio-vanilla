@@ -188,6 +188,7 @@
     display: block;
     font-size: 128px;
     font-weight: 700;
+    white-space: nowrap;
 }
 
 .hero__title-line--top {
