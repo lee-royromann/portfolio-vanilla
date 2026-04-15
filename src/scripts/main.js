@@ -111,18 +111,13 @@ function initCustomCursor() {
 /* ========== NAVBAR SCROLL ========== */
 
 /**
- * Handles scroll events to show or hide the navbar based on direction.
+ * Shows or hides the navbar based on scroll direction and threshold.
  * @param {HTMLElement} navbar - The navbar element.
- * @param {object} state - Shared scroll state with lastScrollY and locked flag.
+ * @param {object} state - Shared scroll state with lastScrollY.
+ * @param {number} y - Current scroll position.
  */
-function handleScroll(navbar, state) {
+function applyScrollDirection(navbar, state, y) {
 	const SCROLL_THRESHOLD = 40;
-	const y = window.scrollY;
-	if (state.locked) {
-		state.lastScrollY = y;
-		navbar.classList.toggle('navbar--scrolled', y > 0);
-		return;
-	}
 	const delta = y - state.lastScrollY;
 	if (delta > SCROLL_THRESHOLD && y > 80) {
 		navbar.classList.add('navbar--hidden');
@@ -131,6 +126,21 @@ function handleScroll(navbar, state) {
 		navbar.classList.remove('navbar--hidden');
 		state.lastScrollY = y;
 	}
+}
+
+/**
+ * Handles scroll events to show or hide the navbar based on direction.
+ * @param {HTMLElement} navbar - The navbar element.
+ * @param {object} state - Shared scroll state with lastScrollY and locked flag.
+ */
+function handleScroll(navbar, state) {
+	const y = window.scrollY;
+	if (state.locked) {
+		state.lastScrollY = y;
+		navbar.classList.toggle('navbar--scrolled', y > 0);
+		return;
+	}
+	applyScrollDirection(navbar, state, y);
 	navbar.classList.toggle('navbar--scrolled', y > 0);
 }
 
@@ -416,22 +426,30 @@ function setupFieldValidation() {
 }
 
 /**
+ * Validates a single field: marks it as touched and shows/clears error.
+ * @param {string} fieldId - The element's ID.
+ * @returns {boolean} True if the field is invalid.
+ */
+function validateField(fieldId) {
+	const field = document.getElementById(fieldId);
+	if (!field) return false;
+	fieldTouched[fieldId] = true;
+	if (!field.value.trim()) {
+		showFieldError(field, fieldId);
+		return true;
+	}
+	clearFieldError(field, fieldId);
+	return false;
+}
+
+/**
  * Validates all contact form fields at once (used on submit).
- * Marks every empty field as touched and shows its error message.
  * @returns {boolean} True if at least one field is invalid.
  */
 function validateAllFields() {
 	let hasError = false;
 	Object.keys(FIELD_ERROR_KEYS).forEach(fieldId => {
-		const field = document.getElementById(fieldId);
-		if (!field) return;
-		fieldTouched[fieldId] = true;
-		if (!field.value.trim()) {
-			showFieldError(field, fieldId);
-			hasError = true;
-		} else {
-			clearFieldError(field, fieldId);
-		}
+		if (validateField(fieldId)) hasError = true;
 	});
 	return hasError;
 }
@@ -482,6 +500,43 @@ function setupAutoResize() {
 }
 
 /**
+ * Resets the contact form and shows a success toast after submission.
+ * @param {HTMLFormElement} form - The contact form element.
+ */
+function handleSubmitSuccess(form) {
+	form.reset();
+	const textarea = document.querySelector('.contact__textarea');
+	if (textarea) textarea.style.height = '';
+	updateSubmitState();
+	showToast('success');
+}
+
+/**
+ * Updates the submit button state and shows an error toast.
+ */
+function handleSubmitError() {
+	updateSubmitState();
+	showToast('error');
+}
+
+/**
+ * Validates and submits the contact form via the email backend.
+ * @param {HTMLFormElement} form - The contact form element.
+ * @param {HTMLButtonElement} submitBtn - The submit button element.
+ */
+async function handleFormSubmit(form, submitBtn) {
+	if (validateAllFields()) return;
+	submitBtn.disabled = true;
+	try {
+		const result = await sendContactForm(form);
+		if (result.success) handleSubmitSuccess(form);
+		else handleSubmitError();
+	} catch {
+		handleSubmitError();
+	}
+}
+
+/**
  * Initializes the contact form: enables the submit button via privacy checkbox
  * and sets up field validation with error messages on blur and submit.
  */
@@ -493,45 +548,33 @@ function initContactForm() {
 	handlePrivacyToggle(privacyCheckbox);
 	setupFieldValidation();
 	setupAutoResize();
-	contactForm.addEventListener('submit', async (e) => {
+	contactForm.addEventListener('submit', (e) => {
 		e.preventDefault();
-		if (validateAllFields()) return;
-		submitButton.disabled = true;
-		try {
-			const result = await sendContactForm(contactForm);
-			if (result.success) {
-				contactForm.reset();
-				const textarea = document.querySelector('.contact__textarea');
-				if (textarea) textarea.style.height = '';
-				updateSubmitState();
-				showToast('success');
-			} else {
-				updateSubmitState();
-				showToast('error');
-			}
-		} catch {
-			updateSubmitState();
-			showToast('error');
-		}
+		handleFormSubmit(contactForm, submitButton);
+	});
+}
+
+/**
+ * Attaches hover and animation listeners for one icon-roll wrapper.
+ * @param {HTMLElement} wrapper - The icon-roll wrapper element.
+ */
+function addIconRollListeners(wrapper) {
+	wrapper.addEventListener('mouseenter', () => {
+		wrapper.classList.add('is-hovered');
+		wrapper.classList.remove('is-leaving');
+	});
+	wrapper.addEventListener('mouseleave', () => {
+		wrapper.classList.remove('is-hovered');
+		wrapper.classList.add('is-leaving');
+	});
+	wrapper.addEventListener('animationend', (e) => {
+		if (e.animationName === 'icon-roll-out') wrapper.classList.remove('is-leaving');
 	});
 }
 
 /**
  * Initializes the icon-roll hover effect for footer links (GitHub, LinkedIn).
- * Adds and removes CSS classes on mouseenter/mouseleave for the roll animation.
  */
 function initGitHubIconRoll() {
-	document.querySelectorAll('.contact__icon-roll-wrapper').forEach((wrapper) => {
-		wrapper.addEventListener('mouseenter', () => {
-			wrapper.classList.add('is-hovered');
-			wrapper.classList.remove('is-leaving');
-		});
-		wrapper.addEventListener('mouseleave', () => {
-			wrapper.classList.remove('is-hovered');
-			wrapper.classList.add('is-leaving');
-		});
-		wrapper.addEventListener('animationend', (e) => {
-			if (e.animationName === 'icon-roll-out') wrapper.classList.remove('is-leaving');
-		});
-	});
+	document.querySelectorAll('.contact__icon-roll-wrapper').forEach(addIconRollListeners);
 }
