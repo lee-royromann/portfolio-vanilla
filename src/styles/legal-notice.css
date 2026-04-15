@@ -228,7 +228,7 @@
     }
 
     .legal-notice__back {
-        display: flex;
+        display: inline-flex;
     }
 
     .legal-notice__hero {
