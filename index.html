@@ -21,6 +21,7 @@
 
     <script src="./src/scripts/translation.js" defer></script>
     <script src="./src/scripts/hero.js" defer></script>
+    <script src="./src/scripts/email.js" defer></script>
     <script src="./src/scripts/main.js" defer></script>
 </head>
 
@@ -107,7 +108,7 @@
                     </svg>
                 </a>
 
-                <a href="mailto:lee-roy@romann.ch" aria-label="Email">
+                <a href="mailto:info@lee-roy.ch" aria-label="Email">
                     <svg viewBox="0 0 32 32" fill="none">
                         <path d="M6.4 25.2C5.74 25.2 5.175 24.965 4.705 24.495C4.235 24.025 4 23.46 4 22.8V8.4C4 7.74 4.235 7.175 4.705 6.705C5.175 6.235 5.74 6 6.4 6H25.6C26.26 6 26.825 6.235 27.295 6.705C27.765 7.175 28 7.74 28 8.4V22.8C28 23.46 27.765 24.025 27.295 24.495C26.825 24.965 26.26 25.2 25.6 25.2H6.4ZM16 16.59C16.1 16.59 16.205 16.575 16.315 16.545C16.425 16.515 16.53 16.47 16.63 16.41L25.12 11.1C25.28 11 25.4 10.875 25.48 10.725C25.56 10.575 25.6 10.41 25.6 10.23C25.6 9.83 25.43 9.53 25.09 9.33C24.75 9.13 24.4 9.14 24.04 9.36L16 14.4L7.96 9.36C7.6 9.14 7.25 9.135 6.91 9.345C6.57 9.555 6.4 9.85 6.4 10.23C6.4 10.43 6.44 10.605 6.52 10.755C6.6 10.905 6.72 11.02 6.88 11.1L15.37 16.41C15.47 16.47 15.575 16.515 15.685 16.545C15.795 16.575 15.9 16.59 16 16.59Z" fill="currentColor"/>
                     </svg>
@@ -130,7 +131,7 @@
                 </svg>
             </a>
 
-            <a class="hero__social-link" href="mailto:lee-roy@romann.ch" aria-label="Email">
+            <a class="hero__social-link" href="mailto:info@lee-roy.ch" aria-label="Email">
                 <svg class="hero__social-icon" viewBox="0 0 32 32" fill="none">
                     <path d="M6.4 25.2C5.74 25.2 5.175 24.965 4.705 24.495C4.235 24.025 4 23.46 4 22.8V8.4C4 7.74 4.235 7.175 4.705 6.705C5.175 6.235 5.74 6 6.4 6H25.6C26.26 6 26.825 6.235 27.295 6.705C27.765 7.175 28 7.74 28 8.4V22.8C28 23.46 27.765 24.025 27.295 24.495C26.825 24.965 26.26 25.2 25.6 25.2H6.4ZM16 16.59C16.1 16.59 16.205 16.575 16.315 16.545C16.425 16.515 16.53 16.47 16.63 16.41L25.12 11.1C25.28 11 25.4 10.875 25.48 10.725C25.56 10.575 25.6 10.41 25.6 10.23C25.6 9.83 25.43 9.53 25.09 9.33C24.75 9.13 24.4 9.14 24.04 9.36L16 14.4L7.96 9.36C7.6 9.14 7.25 9.135 6.91 9.345C6.57 9.555 6.4 9.85 6.4 10.23C6.4 10.43 6.44 10.605 6.52 10.755C6.6 10.905 6.72 11.02 6.88 11.1L15.37 16.41C15.47 16.47 15.575 16.515 15.685 16.545C15.795 16.575 15.9 16.59 16 16.59Z" fill="currentColor"/>
                 </svg>
@@ -295,7 +296,7 @@
                     <img class="skills__peel-img skills__peel-img--default" src="./src/assets/img/3_stickers/1_peel_off/default.webp" alt="Pull to peel sticker" loading="lazy" />
                     <div class="skills__peel-default-content">
                         <img class="skills__peel-arrow" src="./src/assets/img/3_stickers/1_peel_off/arrow.webp" alt="" loading="lazy" />
-                        <span class="skills__peel-text">Pull to<br>peel</span>
+                        <span class="skills__peel-text" data-lang-key="skills.peel.text" data-lang-html>Pull to<br>peel</span>
                     </div>
                 </div>
             </div>
@@ -451,12 +452,12 @@
             <!-- Left column -->
             <div class="contact__info">
                 <div class="contact__header">
-                    <span class="contact__subtitle">CONTACT ME</span>
-                    <h2 class="contact__title">Ready to work together?</h2>
+                    <span class="contact__subtitle" data-lang-key="contact.subtitle">CONTACT ME</span>
+                    <h2 class="contact__title" data-lang-key="contact.title">Ready to work together?</h2>
                 </div>
                 <div class="contact__text">
-                    <p>Encourage people to contact you and describe what role you are interested in. Express confidence in your ability to make a meaningful contribution to a team through your expertise and enthusiasm for improving your skills.</p>
-                    <p>Show interest in contributing to a new project, while highlighting the value and skills you can bring to the table.</p>
+                    <p data-lang-key="contact.text1">Encourage people to contact you and describe what role you are interested in. Express confidence in your ability to make a meaningful contribution to a team through your expertise and enthusiasm for improving your skills.</p>
+                    <p data-lang-key="contact.text2">Show interest in contributing to a new project, while highlighting the value and skills you can bring to the table.</p>
                 </div>
                 <img class="contact__arrow" src="./src/assets/img/0_drawn_lines/5_contact/arrow_right_wavy.webp" alt="" loading="lazy" />
             </div>
@@ -476,29 +477,29 @@
                     <img class="contact__sticker-logo" src="./src/assets/logos/lee-roy.webp" alt="Logo" loading="lazy" />
                 </div>
 
-                <form class="contact__form" action="#" method="POST">
+                <form class="contact__form" novalidate>
                     <div class="contact__field">
-                        <label class="contact__label" for="contact-name">What's your name?</label>
-                        <input class="contact__input" type="text" id="contact-name" name="name" placeholder="Your name goes here" required />
+                        <label class="contact__label" for="contact-name" data-lang-key="contact.label.name">What's your name?</label>
+                        <input class="contact__input" type="text" id="contact-name" name="name" placeholder="Your name goes here" data-lang-placeholder="contact.placeholder.name" />
                     </div>
                     <div class="contact__field">
-                        <label class="contact__label" for="contact-email">What's your email?</label>
-                        <input class="contact__input" type="email" id="contact-email" name="email" placeholder="youremail@email.com" required />
+                        <label class="contact__label" for="contact-email" data-lang-key="contact.label.email">What's your email?</label>
+                        <input class="contact__input" type="email" id="contact-email" name="email" placeholder="youremail@email.com" data-lang-placeholder="contact.placeholder.email" />
                     </div>
                     <div class="contact__field">
-                        <label class="contact__label" for="contact-message">How can I help you?</label>
-                        <textarea class="contact__input contact__textarea" id="contact-message" name="message" placeholder="Hello Lee-Roy, I am interested in..." required></textarea>
+                        <label class="contact__label" for="contact-message" data-lang-key="contact.label.message">How can I help you?</label>
+                        <textarea class="contact__input contact__textarea" id="contact-message" name="message" placeholder="Hi Lee, I'm interested in..." data-lang-placeholder="contact.placeholder.message"></textarea>
                     </div>
 
                     <div class="contact__privacy">
-                        <input class="contact__checkbox" type="checkbox" id="contact-privacy" required />
-                        <label class="contact__privacy-text" for="contact-privacy">I've read the <a class="contact__privacy-link" href="./src/pages/privacy_policy.html">privacy policy</a> and agree to the processing of my data as outlined.</label>
+                        <input class="contact__checkbox" type="checkbox" id="contact-privacy" />
+                        <label class="contact__privacy-text" for="contact-privacy" data-lang-key="contact.privacy" data-lang-html>I've read the <a class="contact__privacy-link" href="./src/pages/privacy_policy.html">privacy policy</a> and agree to the processing of my data as outlined.</label>
                     </div>
-                    <span class="contact__privacy-hint">Please accept the privacy policy.</span>
+                    <span class="contact__privacy-hint" data-lang-key="contact.privacyHint">Please accept the privacy policy.</span>
 
                     <div class="contact__submit-row">
                         <img class="contact__arrow contact__arrow--mobile" src="./src/assets/img/0_drawn_lines/5_contact/arrow_right_wavy.webp" alt="" loading="lazy" />
-                        <button class="contact__submit" type="submit" disabled>Send</button>
+                        <button class="contact__submit" type="submit" disabled data-lang-key="contact.submit">Send</button>
                     </div>
                 </form>
             </div>
@@ -522,7 +523,7 @@
                     <a class="contact__footer-link contact__footer-link--icon-roll" href="https://www.linkedin.com/in/lee-royromann/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 </div>
                 <div class="contact__icon-roll-wrapper contact__icon-roll-wrapper--email">
-                    <a class="contact__footer-link contact__footer-link--icon-roll" href="mailto:lee-roy@romann.ch">Email</a>
+                    <a class="contact__footer-link contact__footer-link--icon-roll" href="mailto:info@lee-roy.ch">Email</a>
                 </div>
             </nav>
         </footer>

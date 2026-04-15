@@ -20,6 +20,7 @@ const translations = {
 		"skills.title": "Skill set",
 		"skills.description": "In Projekten sammelte ich praxisnahe Frontend-Erfahrung, übersetzte Konzepte in responsive Interfaces, arbeitete in strukturierten Workflows und schärfte meinen Entwicklungsansatz kontinuierlich.",
 		"skills.peel.title": "Ausserdem interessiere ich mich für:",
+		"skills.peel.text": "Zieh mich",
 		"projects.subtitle": "MEINE ARBEIT",
 		"projects.title": "Projekte",
 		"projects.description": "Wirf einen Blick auf meine Projekte und erlebe sie interaktiv. Mein Fokus liegt auf responsiven, nutzerfreundlichen Anwendungen mit effizientem Code.",
@@ -28,7 +29,7 @@ const translations = {
 		"projects.eplc.text": "Ein Jump-and-Run-Spiel auf Basis objektorientierter Programmierung. Hilf Pepe, Münzen und Tabasco-Salsa zu finden, um gegen das verrückte Huhn zu kämpfen.",
 		"projects.dabubble.text": "Diese App ist ein Slack-Klon. Sie revolutioniert Teamkommunikation und Zusammenarbeit mit einer intuitiven Oberfläche, Echtzeit-Nachrichten und einer durchdachten Kanalstruktur.",
 		"testimonials.subtitle": "IN IHREN WORTEN:",
-		"testimonials.title": "Stimmen von Kollegen",
+		"testimonials.title": "Was Kollegen sagen",
 		"testimonials.profile": "Profil",
 		"testimonials.quote1": "Lee-Roy hat das Team mit seiner grossartigen Organisation und klaren Kommunikation wirklich zusammengehalten. Ohne seinen Einsatz wären wir nicht so weit gekommen.",
 		"testimonials.role1": "Frontend-Entwickler",
@@ -36,6 +37,24 @@ const translations = {
 		"testimonials.role2": "Frontend-Entwickler",
 		"testimonials.quote3": "Lee-Roy war ein herausragender Teamkollege bei DA. Seine positive Einstellung und seine Bereitschaft, Herausforderungen anzunehmen, haben massgeblich dazu beigetragen, dass wir unsere Ziele erreicht haben.",
 		"testimonials.role3": "Entwicklerin",
+		"toast.success": "E-Mail erfolgreich gesendet!",
+		"toast.error": "E-Mail konnte nicht gesendet werden.",
+		"contact.subtitle": "KONTAKTIERE MICH",
+		"contact.title": "Lass uns gemeinsam loslegen.",
+		"contact.text1": "Du hast eine Idee, ein laufendes Projekt oder suchst Verstärkung für dein Team? Erzähl mir davon. Ich höre gerne zu, denke mit und finde mit dir heraus, wie ich dich am besten unterstützen kann.",
+		"contact.text2": "Kein förmliches Anschreiben nötig. Eine kurze Nachricht reicht und ich melde mich bei dir.",
+		"contact.label.name": "Dein Name?",
+		"contact.placeholder.name": "Dein Name",
+		"contact.label.email": "Deine E-Mail?",
+		"contact.placeholder.email": "deineemail@email.com",
+		"contact.label.message": "Wobei kann ich helfen?",
+		"contact.placeholder.message": "Hi Lee, ich würde gerne...",
+		"contact.privacy": "Ich habe die <a class='contact__privacy-link' href='./src/pages/privacy_policy.html'>Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu.",
+		"contact.privacyHint": "Bitte akzeptiere die Datenschutzerklärung.",
+		"contact.submit": "Senden",
+		"contact.error.name": "Ups, dein Name fehlt.",
+		"contact.error.email": "Hoppla, deine E-Mail fehlt.",
+		"contact.error.message": "Was benötigst du?",
 	},
 	en: {
 		"navbar.link.about": "About me",
@@ -58,6 +77,7 @@ const translations = {
 		"skills.title": "Skill set",
 		"skills.description": "Across projects, I gained hands-on frontend experience, turning concepts into responsive interfaces, collaborating in structured workflows, and refining my development approach.",
 		"skills.peel.title": "Also, I'm interested in diving into:",
+		"skills.peel.text": "Pull to<br>peel",
 		"projects.subtitle": "MY CRAFT",
 		"projects.title": "Projects",
 		"projects.description": "Take a look at my projects and experience them interactively. My focus is on responsive, user-friendly applications with efficient code.",
@@ -74,6 +94,24 @@ const translations = {
 		"testimonials.role2": "Frontend Developer",
 		"testimonials.quote3": "Lee-Roy was an outstanding team colleague at DA. His positive attitude and willingness to take on challenges made a significant contribution to us achieving our goals.",
 		"testimonials.role3": "Developer",
+		"toast.success": "Email successfully sent!",
+		"toast.error": "Email could not be sent.",
+		"contact.subtitle": "CONTACT ME",
+		"contact.title": "Let's get started together.",
+		"contact.text1": "Got an idea, a project in progress, or looking for someone to join your team? Tell me about it. I love listening, thinking along, and figuring out how I can best support you.",
+		"contact.text2": "No formal cover letter needed. Just a short message and I'll get back to you.",
+		"contact.label.name": "What's your name?",
+		"contact.placeholder.name": "Your name goes here",
+		"contact.label.email": "What's your email?",
+		"contact.placeholder.email": "youremail@email.com",
+		"contact.label.message": "How can I help you?",
+		"contact.placeholder.message": "Hi Lee, I'm interested in...",
+		"contact.privacy": "I've read the <a class='contact__privacy-link' href='./src/pages/privacy_policy.html'>privacy policy</a> and agree to the processing of my data as outlined.",
+		"contact.privacyHint": "Please accept the privacy policy.",
+		"contact.submit": "Send",
+		"contact.error.name": "Oops! Your name is missing.",
+		"contact.error.email": "Oops! Your email is required.",
+		"contact.error.message": "What do you need?",
 	},
 };
 
@@ -91,14 +129,12 @@ function getStoredLang() {
  */
 function rebuildLetterHover(lines) {
 	if (!lines.length) return;
-	if (typeof splitTextIntoSpans !== 'function') return; // defined in hero.js
-	const groups = [];
+	if (typeof splitIntoLetterSpans !== 'function') return; // defined in hero.js
 	for (const line of lines) {
-		const spans = splitTextIntoSpans(line);
-		addLetterListeners(spans);
-		groups.push({ line, spans });
+		splitIntoLetterSpans(line);
+		measureLetterWidths(line);
+		addLetterListeners(line);
 	}
-	refreshLetterWidths(groups);
 }
 
 /**
@@ -112,8 +148,16 @@ function translatePage(lang) {
 	document.querySelectorAll('[data-lang-key]').forEach((el) => {
 		const key = el.dataset.langKey;
 		if (dict[key] === undefined) return;
-		el.textContent = dict[key];
+		if (el.dataset.langHtml !== undefined) {
+			el.innerHTML = dict[key];
+		} else {
+			el.textContent = dict[key];
+		}
 		if (el.hasAttribute('data-letter-hover')) letterHoverLines.push(el);
+	});
+	document.querySelectorAll('[data-lang-placeholder]').forEach((el) => {
+		const key = el.dataset.langPlaceholder;
+		if (dict[key] !== undefined) el.placeholder = dict[key];
 	});
 	rebuildLetterHover(letterHoverLines);
 }
