@@ -13,7 +13,7 @@
 .skills::before {
     content: '';
     position: absolute;
-    top: 0;
+    top: -2px;
     bottom: 0;
     left: -2px;
     right: -3px;
@@ -192,7 +192,7 @@
     transition: filter 0.3s ease, transform 0.3s ease;
 }
 
-.skills__icon:hover {
+.skills__item:hover .skills__icon {
     filter: grayscale(0);
     transform: scale(0.85);
 }
