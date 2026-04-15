@@ -345,11 +345,17 @@ function initFloatingCard() {
 /**
  * Enables or disables the submit button based on the privacy checkbox state.
  */
-const FIELD_ERROR_MESSAGES = {
-	'contact-name': 'Oops! it seems your name is missing',
-	'contact-email': 'Hoppla! your email is required',
-	'contact-message': 'What do you need to develop?'
+const FIELD_ERROR_KEYS = {
+	'contact-name': 'contact.error.name',
+	'contact-email': 'contact.error.email',
+	'contact-message': 'contact.error.message'
 };
+
+function getFieldErrorMessage(fieldId) {
+	const lang = getStoredLang();
+	const key = FIELD_ERROR_KEYS[fieldId];
+	return translations[lang]?.[key] || translations['en'][key];
+}
 
 const defaultPlaceholders = {};
 const fieldTouched = {};
@@ -360,7 +366,7 @@ const fieldTouched = {};
  * @param {string} fieldId - The element's ID used to look up the error message.
  */
 function showFieldError(field, fieldId) {
-	field.placeholder = FIELD_ERROR_MESSAGES[fieldId];
+	field.placeholder = getFieldErrorMessage(fieldId);
 	field.classList.add('contact__input--error');
 }
 
@@ -378,6 +384,7 @@ function clearFieldError(field, fieldId) {
  * Registers focus, blur, and input listeners for live field validation.
  * Shows an error on blur if the field was touched but left empty.
  * Clears the error as soon as the user starts typing.
+ * Updates submit button state on every input change.
  * @param {HTMLElement} field - The input or textarea element.
  * @param {string} fieldId - The element's ID.
  */
@@ -390,6 +397,7 @@ function addFieldValidationListeners(field, fieldId) {
 	});
 	field.addEventListener('input', () => {
 		if (field.value.trim()) clearFieldError(field, fieldId);
+		updateSubmitState();
 	});
 }
 
@@ -398,7 +406,7 @@ function addFieldValidationListeners(field, fieldId) {
  * Stores each field's default placeholder and attaches validation listeners.
  */
 function setupFieldValidation() {
-	Object.keys(FIELD_ERROR_MESSAGES).forEach(fieldId => {
+	Object.keys(FIELD_ERROR_KEYS).forEach(fieldId => {
 		const field = document.getElementById(fieldId);
 		if (!field) return;
 		defaultPlaceholders[fieldId] = field.placeholder;
@@ -414,7 +422,7 @@ function setupFieldValidation() {
  */
 function validateAllFields() {
 	let hasError = false;
-	Object.keys(FIELD_ERROR_MESSAGES).forEach(fieldId => {
+	Object.keys(FIELD_ERROR_KEYS).forEach(fieldId => {
 		const field = document.getElementById(fieldId);
 		if (!field) return;
 		fieldTouched[fieldId] = true;
@@ -429,19 +437,48 @@ function validateAllFields() {
 }
 
 /**
+ * Checks whether all form fields are filled and the privacy checkbox is checked.
+ * Enables or disables the submit button accordingly.
+ */
+function updateSubmitState() {
+	const submitBtn = document.querySelector('.contact__submit');
+	const checkbox = document.getElementById('contact-privacy');
+	if (!submitBtn || !checkbox) return;
+	const allFilled = Object.keys(FIELD_ERROR_KEYS).every(fieldId => {
+		const field = document.getElementById(fieldId);
+		return field && field.value.trim();
+	});
+	const emailField = document.getElementById('contact-email');
+	const emailValid = emailField && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value.trim());
+	submitBtn.disabled = !(allFilled && emailValid && checkbox.checked);
+}
+
+/**
  * Toggles the privacy hint visibility when the checkbox is unchecked
  * after having been checked at least once.
  * @param {HTMLElement} checkbox - The privacy checkbox element.
- * @param {HTMLElement} submitBtn - The submit button to enable/disable.
  */
-function handlePrivacyToggle(checkbox, submitBtn) {
+function handlePrivacyToggle(checkbox) {
 	let wasCheckedOnce = false;
 	const privacyHint = document.querySelector('.contact__privacy-hint');
 	checkbox.addEventListener('change', () => {
-		submitBtn.disabled = !checkbox.checked;
 		if (checkbox.checked) wasCheckedOnce = true;
 		if (privacyHint) privacyHint.style.visibility = (!checkbox.checked && wasCheckedOnce) ? 'visible' : 'hidden';
+		updateSubmitState();
 	});
+}
+
+function setupAutoResize() {
+	const textarea = document.querySelector('.contact__textarea');
+	if (!textarea) return;
+	const maxHeight = 200;
+	const resize = () => {
+		textarea.style.height = 'auto';
+		const scrollH = textarea.scrollHeight;
+		textarea.style.height = Math.min(scrollH, maxHeight) + 'px';
+		textarea.style.overflow = scrollH > maxHeight ? 'auto' : 'hidden';
+	};
+	textarea.addEventListener('input', resize);
 }
 
 /**
@@ -453,10 +490,29 @@ function initContactForm() {
 	const submitButton = document.querySelector('.contact__submit');
 	const contactForm = document.querySelector('.contact__form');
 	if (!privacyCheckbox || !submitButton || !contactForm) return;
-	handlePrivacyToggle(privacyCheckbox, submitButton);
+	handlePrivacyToggle(privacyCheckbox);
 	setupFieldValidation();
-	contactForm.addEventListener('submit', (e) => {
-		if (validateAllFields()) e.preventDefault();
+	setupAutoResize();
+	contactForm.addEventListener('submit', async (e) => {
+		e.preventDefault();
+		if (validateAllFields()) return;
+		submitButton.disabled = true;
+		try {
+			const result = await sendContactForm(contactForm);
+			if (result.success) {
+				contactForm.reset();
+				const textarea = document.querySelector('.contact__textarea');
+				if (textarea) textarea.style.height = '';
+				updateSubmitState();
+				showToast('success');
+			} else {
+				updateSubmitState();
+				showToast('error');
+			}
+		} catch {
+			updateSubmitState();
+			showToast('error');
+		}
 	});
 }
 
