@@ -30,6 +30,26 @@ const translations = {
 		"projects.pokedex.text": "Eine Pokédex-Web-App, die Pokémon-Daten von einer API abruft. Suche, filtere und entdecke detaillierte Werte zu jedem Pokémon.",
 		"projects.leeferando.text": "Eine simulierte Liefer- und Bestell-App. Durchstöbere die Gerichte eines Restaurants, lege sie in den Warenkorb und gib eine Testbestellung auf.",
 		"projects.momo.text": "Webseite für einen Food Truck, der tibetische Momos anbietet. Mit Menükarte und Kontaktinformationen.",
+		"project.back": "Zurück",
+		"project.descriptionTitle": "Beschreibung",
+		"project.implementationTitle": "Umsetzungsdetails",
+		"project.durationLabel": "Dauer:",
+		"project.next": "Nächstes Projekt",
+		"project.join.description": "Aufgabenmanager nach dem Kanban-Prinzip. Erstelle und organisiere Aufgaben per Drag & Drop, weise Nutzer und Kategorien zu.",
+		"project.join.implementation": "Kurzer Text, der deine Rolle oder den Workflow für dieses spezifische Projekt beschreibt. Zeige einem Recruiter dein Wissen und deine Fähigkeit, eigenständig oder kollaborativ in strukturierter Weise zu arbeiten.",
+		"project.join.duration": "5 Wochen",
+		"project.eplc.description": "Ein Jump-and-Run-Spiel auf Basis objektorientierter Programmierung. Hilf Pepe, Münzen und Tabasco-Salsa zu finden, um gegen das verrückte Huhn zu kämpfen.",
+		"project.eplc.implementation": "Kurzer Text, der deine Rolle oder den Workflow für dieses spezifische Projekt beschreibt. Zeige einem Recruiter dein Wissen und deine Fähigkeit, eigenständig oder kollaborativ in strukturierter Weise zu arbeiten.",
+		"project.eplc.duration": "4 Wochen",
+		"project.pokedex.description": "Eine Pokédex-Web-App, die Pokémon-Daten von einer API abruft. Suche, filtere und entdecke detaillierte Werte zu jedem Pokémon.",
+		"project.pokedex.implementation": "Kurzer Text, der deine Rolle oder den Workflow für dieses spezifische Projekt beschreibt. Zeige einem Recruiter dein Wissen und deine Fähigkeit, eigenständig oder kollaborativ in strukturierter Weise zu arbeiten.",
+		"project.pokedex.duration": "3 Wochen",
+		"project.leeferando.description": "Eine simulierte Liefer- und Bestell-App. Durchstöbere die Gerichte eines Restaurants, lege sie in den Warenkorb und gib eine Testbestellung auf.",
+		"project.leeferando.implementation": "Kurzer Text, der deine Rolle oder den Workflow für dieses spezifische Projekt beschreibt. Zeige einem Recruiter dein Wissen und deine Fähigkeit, eigenständig oder kollaborativ in strukturierter Weise zu arbeiten.",
+		"project.leeferando.duration": "3 Wochen",
+		"project.momo.description": "Webseite für einen Food Truck, der tibetische Momos anbietet. Mit Menükarte und Kontaktinformationen.",
+		"project.momo.implementation": "Kurzer Text, der deine Rolle oder den Workflow für dieses spezifische Projekt beschreibt. Zeige einem Recruiter dein Wissen und deine Fähigkeit, eigenständig oder kollaborativ in strukturierter Weise zu arbeiten.",
+		"project.momo.duration": "2 Wochen",
 		"testimonials.subtitle": "IN IHREN WORTEN:",
 		"testimonials.title": "Was Kollegen sagen",
 		"testimonials.profile": "Profil",
@@ -89,6 +109,26 @@ const translations = {
 		"projects.pokedex.text": "A Pokédex web app that fetches Pokémon data from an API. Search, filter and explore detailed stats for each Pokémon.",
 		"projects.leeferando.text": "A simulated food delivery and ordering app. Browse a restaurant's dishes, add them to your cart and place a test order.",
 		"projects.momo.text": "Website for a food truck serving Tibetan momos. Features a menu and contact information.",
+		"project.back": "Go Back",
+		"project.descriptionTitle": "Description",
+		"project.implementationTitle": "Implementation Details",
+		"project.durationLabel": "Duration:",
+		"project.next": "Next Project",
+		"project.join.description": "Task manager inspired by the Kanban System. Create and organize tasks using drag and drop functions, assign users and categories.",
+		"project.join.implementation": "Short text that describes your role or the workflow for this specific project. Let a recruiter know more about your knowledge and ability to work independently or collaboratively in a structured way.",
+		"project.join.duration": "5 weeks",
+		"project.eplc.description": "Jump, run and throw game based on object-oriented approach. Help Pepe to find coins and tabasco salsa to fight against the crazy hen.",
+		"project.eplc.implementation": "Short text that describes your role or the workflow for this specific project. Let a recruiter know more about your knowledge and ability to work independently or collaboratively in a structured way.",
+		"project.eplc.duration": "4 weeks",
+		"project.pokedex.description": "A Pokédex web app that fetches Pokémon data from an API. Search, filter and explore detailed stats for each Pokémon.",
+		"project.pokedex.implementation": "Short text that describes your role or the workflow for this specific project. Let a recruiter know more about your knowledge and ability to work independently or collaboratively in a structured way.",
+		"project.pokedex.duration": "3 weeks",
+		"project.leeferando.description": "A simulated food delivery and ordering app. Browse a restaurant's dishes, add them to your cart and place a test order.",
+		"project.leeferando.implementation": "Short text that describes your role or the workflow for this specific project. Let a recruiter know more about your knowledge and ability to work independently or collaboratively in a structured way.",
+		"project.leeferando.duration": "3 weeks",
+		"project.momo.description": "Website for a food truck serving Tibetan momos. Features a menu and contact information.",
+		"project.momo.implementation": "Short text that describes your role or the workflow for this specific project. Let a recruiter know more about your knowledge and ability to work independently or collaboratively in a structured way.",
+		"project.momo.duration": "2 weeks",
 		"testimonials.subtitle": "IN THEIR WORDS:",
 		"testimonials.title": "Colleagues' Thoughts",
 		"testimonials.profile": "Profile",
@@ -182,6 +222,11 @@ function translatePage(lang) {
 	if (!dict) return;
 	rebuildLetterHover(translateElements(dict));
 	translatePlaceholders(dict);
+	if (typeof applyProjectTranslations === 'function') {
+		const id = new URLSearchParams(window.location.search).get('project');
+		const project = typeof findProject === 'function' && id ? findProject(id) : null;
+		if (project) applyProjectTranslations(project);
+	}
 }
 
 /**

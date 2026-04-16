@@ -1,0 +1,88 @@
+/**
+ * Project data for all portfolio projects.
+ * Each project has an id matching the URL parameter ?project=<id>.
+ */
+const projectData = [
+	{
+		id: 'join',
+		title: 'Join',
+		descriptionKey: 'project.join.description',
+		implementationKey: 'project.join.implementation',
+		durationKey: 'project.join.duration',
+		image: '../assets/img/4_projects/join.webp',
+		sticker: '../assets/img/4_projects/sticker.webp',
+		github: '#',
+		live: 'https://join-472.developerakademie.net/',
+		tech: [
+			{ name: 'CSS', icon: '../assets/icons/skills/frontend/css.svg' },
+			{ name: 'HTML', icon: '../assets/icons/skills/frontend/html.svg' },
+			{ name: 'Firebase', icon: '../assets/icons/skills/frontend/firebase.svg' },
+			{ name: 'Angular', icon: '../assets/icons/skills/frontend/angular.svg' },
+			{ name: 'TypeScript', icon: '../assets/icons/skills/frontend/typescript.svg' },
+		],
+	},
+	{
+		id: 'eplc',
+		title: 'El Pollo Loco',
+		descriptionKey: 'project.eplc.description',
+		implementationKey: 'project.eplc.implementation',
+		durationKey: 'project.eplc.duration',
+		image: '../assets/img/4_projects/pollo_loco.webp',
+		sticker: null,
+		github: '#',
+		live: 'https://el-pollo-loco.lee-roy.ch',
+		tech: [
+			{ name: 'HTML', icon: '../assets/icons/skills/frontend/html.svg' },
+			{ name: 'CSS', icon: '../assets/icons/skills/frontend/css.svg' },
+			{ name: 'JavaScript', icon: '../assets/icons/skills/frontend/javascript.svg' },
+		],
+	},
+	{
+		id: 'pokedex',
+		title: 'Pokedex',
+		descriptionKey: 'project.pokedex.description',
+		implementationKey: 'project.pokedex.implementation',
+		durationKey: 'project.pokedex.duration',
+		image: '../assets/img/4_projects/pokedex.webp',
+		sticker: null,
+		github: '#',
+		live: 'https://pokedex.lee-roy.ch',
+		tech: [
+			{ name: 'HTML', icon: '../assets/icons/skills/frontend/html.svg' },
+			{ name: 'CSS', icon: '../assets/icons/skills/frontend/css.svg' },
+			{ name: 'JavaScript', icon: '../assets/icons/skills/frontend/javascript.svg' },
+			{ name: 'REST API', icon: '../assets/icons/skills/frontend/rest_api.svg' },
+		],
+	},
+	{
+		id: 'leeferando',
+		title: 'Leeferando',
+		descriptionKey: 'project.leeferando.description',
+		implementationKey: 'project.leeferando.implementation',
+		durationKey: 'project.leeferando.duration',
+		image: '../assets/img/4_projects/leeferando.webp',
+		sticker: null,
+		github: '#',
+		live: 'https://leeferando.lee-roy.ch/',
+		tech: [
+			{ name: 'HTML', icon: '../assets/icons/skills/frontend/html.svg' },
+			{ name: 'CSS', icon: '../assets/icons/skills/frontend/css.svg' },
+			{ name: 'JavaScript', icon: '../assets/icons/skills/frontend/javascript.svg' },
+		],
+	},
+	{
+		id: 'momo',
+		title: 'Magic Momo',
+		descriptionKey: 'project.momo.description',
+		implementationKey: 'project.momo.implementation',
+		durationKey: 'project.momo.duration',
+		image: '../assets/img/4_projects/magic-momo.webp',
+		sticker: null,
+		github: '#',
+		live: 'https://magic-momo.ch',
+		tech: [
+			{ name: 'HTML', icon: '../assets/icons/skills/frontend/html.svg' },
+			{ name: 'CSS', icon: '../assets/icons/skills/frontend/css.svg' },
+		],
+	},
+];
