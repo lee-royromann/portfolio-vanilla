@@ -252,9 +252,9 @@ function updateSwitchUI(lang) {
  */
 function setLang(lang) {
 	document.documentElement.lang = lang;
+	localStorage.setItem('lang', lang);
 	translatePage(lang);
 	updateSwitchUI(lang);
-	localStorage.setItem('lang', lang);
 
 	document.querySelectorAll('.hero__badge').forEach((badge) => {
 		if (typeof setBadgeWidths === 'function') setBadgeWidths(badge); // defined in hero.js
