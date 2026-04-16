@@ -11,7 +11,7 @@ const projectData = [
 		durationKey: 'project.join.duration',
 		image: '../assets/img/4_projects/join.webp',
 		sticker: '../assets/img/4_projects/sticker.webp',
-		github: '#',
+		github: 'https://github.com/lee-royromann/join',
 		live: 'https://join-472.developerakademie.net/',
 		tech: [
 			{ name: 'CSS', icon: '../assets/icons/skills/frontend/css.svg' },
@@ -29,7 +29,7 @@ const projectData = [
 		durationKey: 'project.eplc.duration',
 		image: '../assets/img/4_projects/pollo_loco.webp',
 		sticker: null,
-		github: '#',
+		github: 'https://github.com/lee-royromann/el_pollo_loco',
 		live: 'https://el-pollo-loco.lee-roy.ch',
 		tech: [
 			{ name: 'HTML', icon: '../assets/icons/skills/frontend/html.svg' },
@@ -45,7 +45,7 @@ const projectData = [
 		durationKey: 'project.pokedex.duration',
 		image: '../assets/img/4_projects/pokedex.webp',
 		sticker: null,
-		github: '#',
+		github: 'https://github.com/lee-royromann/pokedex',
 		live: 'https://pokedex.lee-roy.ch',
 		tech: [
 			{ name: 'HTML', icon: '../assets/icons/skills/frontend/html.svg' },
@@ -62,7 +62,7 @@ const projectData = [
 		durationKey: 'project.leeferando.duration',
 		image: '../assets/img/4_projects/leeferando.webp',
 		sticker: null,
-		github: '#',
+		github: 'https://github.com/lee-royromann/bestell_app',
 		live: 'https://leeferando.lee-roy.ch/',
 		tech: [
 			{ name: 'HTML', icon: '../assets/icons/skills/frontend/html.svg' },
