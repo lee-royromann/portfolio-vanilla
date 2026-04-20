@@ -1,0 +1,262 @@
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 1380px) {
+    .skills {
+        padding: 80px 80px 160px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .skills {
+        padding: 80px 60px 140px;
+    }
+
+    .skills__grid {
+        gap: 28px 32px;
+    }
+
+    .skills__description {
+        width: 100%;
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 1045px) {
+    .skills {
+        padding: 72px 48px 140px;
+    }
+
+    .skills__top {
+        gap: 50px;
+    }
+
+    .skills__description {
+        width: 100%;
+        max-width: 550px;
+    }
+
+    .skills__grid {
+        gap: 28px 28px;
+    }
+
+    .skills__icon {
+        width: 64px;
+        height: 64px;
+    }
+
+    .skills__peel-off {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 925px) {
+    .skills {
+        padding: 48px 48px 140px;
+    }
+
+    .skills__layout {
+        gap: 42px;
+    }
+
+    .skills__top {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .skills__top:nth-child(1) {
+        align-items: center;
+    }
+
+    .skills__title-wrapper {
+        align-self: center;
+        text-align: center;
+    }
+
+    .skills__description {
+        width: 100%;
+        max-width: 656px;
+    }
+
+    .skills__bottom {
+        gap: 50px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .skills__grid {
+        grid-template-columns: repeat(5, 1fr);
+        justify-items: center;
+        gap: 28px 45px;
+        flex: 1;
+    }
+
+    .skills__peel-off {
+        display: flex;
+        justify-content: center;
+        width: 180px;
+        height: 180px;
+        align-self: center;
+        margin-bottom: 70px;
+    }
+}
+
+@media (max-width: 740px) {
+    .skills {
+        padding: 56px 40px 120px;
+    }
+
+    .skills__subtitle {
+        font-size: 16px;
+    }
+
+    .skills__title {
+        font-size: 52px;
+    }
+
+    .skills__title-circle-wrapper {
+        height: 68px;
+    }
+
+    .skills__description {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .skills__grid {
+        width: 100%;
+        max-width: 600px;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 32px 0px;
+    }
+
+    .skills__icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .skills__label {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 560px) {
+    .skills {
+        padding: 48px 24px 110px;
+    }
+
+    .skills__top {
+        gap: 20px;
+    }
+
+    .skills__title {
+        font-size: 44px;
+    }
+
+    .skills__title-circle-wrapper {
+        height: 60px;
+    }
+
+    .skills__description-text {
+        font-size: 16px;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .skills__bottom {
+        gap: 32px;
+    }
+
+    .skills__item {
+        width: 80px;
+    }
+
+    .skills__icon {
+        width: 52px;
+        height: 52px;
+        filter: none;
+    }
+
+    .skills__label {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 500px) {
+    .skills__title-wrapper {
+        align-self: flex-end;
+        width: 100%;
+        align-items: flex-end;
+        text-align: right;
+    }
+
+    .skills__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .skills__bottom {
+        gap: 32px;
+    }
+
+    .skills__peel-off {
+        display: flex;
+        align-self: flex-end;
+        width: 170px;
+        margin-top: -80px;
+        margin-right: 14px;
+    }
+}
+
+@media (max-width: 400px) {
+    .skills {
+        padding: 40px 16px 100px;
+    }
+
+    .skills__title {
+        font-size: 38px;
+    }
+
+    .skills__description-text {
+        font-size: 14px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .skills__grid {
+        gap: 18px 0;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .skills__icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .skills__label {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 360px) {
+    .skills {
+        padding: 32px 16px 80px;
+    }
+
+    .skills__title {
+        font-size: 34px;
+    }
+
+    .skills__title-circle-wrapper {
+        height: 52px;
+    }
+
+    .skills__grid {
+        gap: 14px 0;
+    }
+
+    .skills__icon {
+        width: 40px;
+        height: 40px;
+    }
+}
