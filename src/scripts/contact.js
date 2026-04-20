@@ -140,9 +140,11 @@ function handlePrivacyToggle(checkbox) {
  * Sets up auto-resizing for the message textarea.
  */
 function setupAutoResize() {
-	const textarea = document.querySelector('.contact__textarea');
-	if (!textarea) return;
+	const textarea = document.querySelector('.contact__textarea'); if (!textarea) return;
 	const maxHeight = 200;
+	/**
+	 * Fits the textarea height to its content until the max height is reached.
+	 */
 	const resize = () => {
 		textarea.style.height = 'auto';
 		const scrollH = textarea.scrollHeight;

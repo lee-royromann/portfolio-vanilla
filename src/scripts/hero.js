@@ -1,8 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-	initLetterHover();
-	initIconRoll();
-});
-
 const LETTER_GAP = 6;
 
 // Letter Hover
@@ -183,3 +178,13 @@ function initIconRoll() {
 		cleanUpAnimation(wrapper, 'hero-icon-roll-left', 'is-leaving');
 	});
 }
+
+/**
+ * Initializes the hero interactions after the deferred script loads.
+ */
+function initHeroSection() {
+	initLetterHover();
+	initIconRoll();
+}
+
+initHeroSection();

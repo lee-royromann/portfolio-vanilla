@@ -268,7 +268,11 @@ function toggleLang() {
 	setLang(getStoredLang() === 'de' ? 'en' : 'de');
 }
 
-// Restore saved language on page load
-document.addEventListener('DOMContentLoaded', () => {
+/**
+ * Restores the saved language after the deferred script loads.
+ */
+function initTranslations() {
 	setLang(getStoredLang());
-});
+}
+
+initTranslations();

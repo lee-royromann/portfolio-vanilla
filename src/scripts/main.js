@@ -1,13 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-	initCustomCursor();
-	initNavbarScroll();
-	initMobileMenu();
-	initPeelOff();
-	initFloatingCard();
-	if (typeof initContactForm === 'function') initContactForm();
-	initGitHubIconRoll();
-});
-
 /* ========== NAVBAR SCROLL ========== */
 
 /**
@@ -50,6 +40,9 @@ function handleScroll(navbar, state) {
  */
 function onScrollEnd(callback) {
 	let timer = null;
+	/**
+	 * Refreshes the scroll-end debounce timer while scrolling continues.
+	 */
 	const onScroll = () => {
 		clearTimeout(timer);
 		timer = setTimeout(() => {
@@ -295,3 +288,18 @@ function addIconRollListeners(wrapper) {
 function initGitHubIconRoll() {
 	document.querySelectorAll('.contact__icon-roll-wrapper').forEach(addIconRollListeners);
 }
+
+/**
+ * Initializes the shared page interactions after all deferred scripts load.
+ */
+function initMainScripts() {
+	initCustomCursor();
+	initNavbarScroll();
+	initMobileMenu();
+	initPeelOff();
+	initFloatingCard();
+	if (typeof initContactForm === 'function') initContactForm();
+	initGitHubIconRoll();
+}
+
+initMainScripts();
