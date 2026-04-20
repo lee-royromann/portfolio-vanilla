@@ -12,13 +12,12 @@ const projectData = [
 		image: '../assets/img/4_projects/join.webp',
 		sticker: '../assets/img/4_projects/sticker.webp',
 		github: 'https://github.com/lee-royromann/join',
-		live: 'https://join-472.developerakademie.net/',
+		live: 'https://www.join.lee-roy.ch',
 		tech: [
-			{ name: 'CSS', icon: '../assets/icons/skills/frontend/css.svg' },
 			{ name: 'HTML', icon: '../assets/icons/skills/frontend/html.svg' },
-			{ name: 'Firebase', icon: '../assets/icons/skills/frontend/firebase.svg' },
-			{ name: 'Angular', icon: '../assets/icons/skills/frontend/angular.svg' },
-			{ name: 'TypeScript', icon: '../assets/icons/skills/frontend/typescript.svg' },
+			{ name: 'CSS', icon: '../assets/icons/skills/frontend/css.svg' },
+			{ name: 'JavaScript', icon: '../assets/icons/skills/frontend/javascript.svg' },
+			{ name: 'Firebase', icon: '../assets/icons/skills/frontend/firebase.svg' }
 		],
 	},
 	{
@@ -83,6 +82,7 @@ const projectData = [
 		tech: [
 			{ name: 'HTML', icon: '../assets/icons/skills/frontend/html.svg' },
 			{ name: 'CSS', icon: '../assets/icons/skills/frontend/css.svg' },
+			{ name: 'JavaScript', icon: '../assets/icons/skills/frontend/javascript.svg' }
 		],
 	},
 ];

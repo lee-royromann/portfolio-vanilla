@@ -35,7 +35,7 @@ function renderTechStack(techList) {
 	for (const tech of techList) {
 		const item = document.createElement('span');
 		item.className = 'project-detail__tech-item';
-		item.innerHTML = `<img class="project-detail__tech-icon" src="${tech.icon}" alt="${tech.name}" />${tech.name}`;
+		item.innerHTML = `<img class="project-detail__tech-icon" src="${tech.icon}" alt="${tech.name}" /><span>${tech.name}</span>`;
 		container.appendChild(item);
 	}
 }
