@@ -1,0 +1,382 @@
+.hero {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    min-height: 700px;
+    background-image: url('../assets/img/1_background/hero.webp');
+    background-size: cover;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-color: rgb(247, 249, 250);
+    overflow: hidden;
+}
+
+/* ---------- Socials ---------- */
+
+.hero__socials {
+    position: absolute;
+    left: 72px;
+    bottom: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 2;
+}
+
+.hero__social-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--color-white);
+    color: var(--color-white);
+    overflow: hidden;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.hero__social-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-blue);
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    transition: transform 0.3s ease-out;
+    z-index: 1;
+}
+
+.hero__social-link:hover::after {
+    transform: scaleY(1);
+}
+
+.hero__social-icon {
+    width: 32px;
+    height: 32px;
+    position: relative;
+    z-index: 2;
+}
+
+/* ---------- Content ---------- */
+
+.hero__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    max-width: 865px;
+    width: 100%;
+    margin-left: 72px;
+    margin-right: 72px;
+}
+
+/* ---------- Badge (Greeting) ---------- */
+
+.hero__badge-wrapper {
+    position: relative;
+    align-self: flex-start;
+    margin-bottom: 24px;
+}
+
+.hero__badge {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 9px 24px;
+    border: 1px solid var(--color-white);
+    border-radius: 100px;
+    color: var(--color-white);
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 120%;
+    width: var(--badge-width-default);
+    height: 40px;
+    overflow: hidden;
+    cursor: default;
+    transition: width 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero__badge::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-blue);
+    border-radius: inherit;
+    transform: scaleX(0);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.25s ease;
+    z-index: 0;
+}
+
+.hero__badge-text {
+    position: absolute;
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.hero__badge-text--hover {
+    opacity: 0;
+}
+
+/* Expand state (controlled by JS) */
+
+.hero__badge.is-expanded {
+    width: var(--badge-width-hover);
+}
+
+.hero__badge.is-expanded::after {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+.hero__badge.is-expanded .hero__badge-text--default {
+    opacity: 0;
+}
+
+.hero__badge.is-expanded .hero__badge-text--hover {
+    opacity: 1;
+}
+
+/* Waving Hand (Icon Roll) */
+
+.hero__badge-wrapper::before {
+    content: "";
+    position: absolute;
+    top: -42px;
+    right: 5px;
+    width: 40px;
+    height: 40px;
+    background-image: url('../assets/icons/hero/waving_hand.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(-100%) rotate(180deg);
+}
+
+.hero__badge-wrapper.is-hovered::before {
+    animation: hero-icon-roll-right 0.5s ease-out forwards;
+}
+
+.hero__badge-wrapper.is-leaving::before {
+    animation: hero-icon-roll-left 0.5s ease-out forwards;
+}
+
+/* ---------- Title ---------- */
+
+.hero__title {
+    color: var(--color-white);
+    font-family: 'Bricolage Grotesque', sans-serif;
+    line-height: 1;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+}
+
+.hero__title-line {
+    display: block;
+    font-size: 128px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.hero__title-line--top {
+    align-self: flex-start;
+}
+
+.hero__title-line--bottom {
+    align-self: flex-end;
+}
+
+/* Letter hover spans (injected by JS) */
+
+.hero__letter {
+    display: inline-block;
+    width: var(--letter-base-width);
+    cursor: default;
+    vertical-align: baseline;
+    text-align: left;
+    transition: width 0.2s ease;
+}
+
+.hero__letter.is-hovered {
+    width: var(--letter-hover-width);
+}
+
+.hero__letter-inner {
+    display: block;
+    width: 100%;
+    text-align: center;
+    transition: color 0.2s ease;
+}
+
+.hero__letter.is-hovered .hero__letter-inner {
+    color: var(--color-yellow);
+}
+
+.hero__letter--measure {
+    position: absolute;
+    visibility: hidden;
+    width: auto !important;
+    pointer-events: none;
+}
+
+/* ---------- Polaroid ---------- */
+
+.hero__polaroid {
+    position: absolute;
+    top: 27%;
+    right: 4%;
+    width: 212px;
+    transform: rotate(8deg);
+    transform-origin: center center;
+    z-index: 2;
+    transition: transform 0.35s ease;
+}
+
+.hero__polaroid:hover {
+    transform: rotate(8deg);
+}
+
+.hero__polaroid-photo {
+    position: absolute;
+    top: 6.6%;
+    right: 8.1%;
+    bottom: 23.1%;
+    left: 8.1%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.hero__polaroid-photo-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 22%;
+    transition: opacity 0.35s ease, transform 0.35s ease, filter 0.35s ease;
+}
+
+.hero__polaroid-photo-img--default {
+    filter: grayscale(1);
+}
+
+.hero__polaroid-photo-img--hover {
+    opacity: 0;
+}
+
+.hero__polaroid:hover .hero__polaroid-photo-img--default {
+    opacity: 0;
+    transform: scale(1.04);
+}
+
+.hero__polaroid:hover .hero__polaroid-photo-img--hover {
+    opacity: 1;
+    transform: scale(1.04);
+}
+
+.hero__polaroid-caption {
+    position: absolute;
+    right: 13%;
+    bottom: 1.8%;
+    left: 13%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 56px;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.hero__polaroid-caption-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #0f0f0f;
+    font-family: 'Kalam', cursive;
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    transition: opacity 0.25s ease;
+}
+
+.hero__polaroid-caption-text--hover {
+    opacity: 0;
+}
+
+.hero__polaroid:hover .hero__polaroid-caption-text--default {
+    opacity: 0;
+}
+
+.hero__polaroid:hover .hero__polaroid-caption-text--hover {
+    opacity: 1;
+}
+
+.hero__polaroid-frame {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 16px 30px rgba(0, 0, 0, 0.28));
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* ---------- CTA Button ---------- */
+
+.hero__cta {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-end;
+    padding: 9px 24px;
+    border: 1px solid var(--color-white);
+    border-radius: 100px;
+    color: var(--color-white);
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 120%;
+    box-shadow: 2px 4px 0px 0px var(--color-white);
+    transition: background-color 0.3s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.hero__cta:hover {
+    background-color: var(--color-orange);
+}
+
+.hero__cta:active {
+    background-color: var(--color-orange);
+    box-shadow: 0 0 0 0 var(--color-white);
+    transform: translateY(4px);
+}
+
+/* KEYFRAME ANIMATIONS */
+
+@keyframes hero-icon-roll-right {
+    0%   { transform: translateX(-100%) rotate(90deg); opacity: 0; }
+    50%  { opacity: 0.4; }
+    100% { transform: translateX(0) rotate(360deg); opacity: 1; }
+}
+
+@keyframes hero-icon-roll-left {
+    0%   { transform: translateX(0) rotate(360deg); opacity: 1; }
+    50%  { opacity: 0; }
+    100% { transform: translateX(-100%) rotate(90deg); }
+}
