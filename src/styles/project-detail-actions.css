@@ -1,0 +1,75 @@
+/* ---------- Buttons ---------- */
+
+.project-detail__buttons {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.project-detail__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 24px;
+    border: 1px solid var(--color-white);
+    border-radius: 100px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--color-white);
+    text-decoration: none;
+    box-shadow: 2px 4px 0px 0px var(--color-white);
+    transition: background-color 0.3s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.project-detail__btn:hover {
+    background-color: var(--color-orange);
+}
+
+.project-detail__btn:active {
+    background-color: var(--color-orange);
+    box-shadow: 0 0 0 0 var(--color-white);
+    transform: translateY(4px);
+}
+
+/* ---------- Next Project ---------- */
+
+.project-detail__next {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 80px;
+    padding-bottom: 80px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--color-white);
+    text-decoration: none;
+    float: right;
+}
+
+.project-detail__next:hover {
+    color: #F7C518;
+}
+
+.project-detail__next-arrow--default {
+    width: 32px;
+    height: 32px;
+}
+
+.project-detail__next-arrow--hover {
+    display: none;
+    width: 32px;
+    height: 32px;
+}
+
+.project-detail__next:hover .project-detail__next-arrow--default {
+    display: none;
+}
+
+.project-detail__next:hover .project-detail__next-arrow--hover {
+    display: block;
+}
