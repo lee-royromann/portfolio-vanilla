@@ -66,6 +66,32 @@ function setupVisibility(dot, outline) {
 }
 
 /**
+ * Checks whether the current page should use blend-mode cursor colors.
+ * @returns {boolean} True when the current page uses blend-mode cursors.
+ */
+function usesBlendCursorTheme() {
+	return document.body.classList.contains('page--project-detail')
+		|| document.body.classList.contains('page--home');
+}
+
+/**
+ * Applies the correct color mode to the custom cursor.
+ * @param {MouseEvent} e - The current mouse event.
+ * @param {HTMLElement} dot - The dot cursor element.
+ * @param {HTMLElement} outline - The outline circle element.
+ */
+function syncCursorTheme(e, dot, outline) {
+	if (usesBlendCursorTheme()) {
+		dot.classList.remove('cursor-dot--dark');
+		outline.classList.remove('cursor-outline--dark');
+		return;
+	}
+	const isDark = !!e.target.closest('[data-cursor-dark]');
+	dot.classList.toggle('cursor-dot--dark', isDark);
+	outline.classList.toggle('cursor-outline--dark', isDark);
+}
+
+/**
  * Tracks mouse movement to update dot position and cursor color mode.
  * @param {HTMLElement} dot - The dot cursor element.
  * @param {HTMLElement} outline - The outline circle element.
@@ -76,9 +102,7 @@ function handleMouseMove(dot, outline, target) {
 		target.x = e.clientX;
 		target.y = e.clientY;
 		moveTo(dot, e.clientX, e.clientY);
-		const isDark = !!e.target.closest('[data-cursor-dark]');
-		dot.classList.toggle('cursor-dot--dark', isDark);
-		outline.classList.toggle('cursor-outline--dark', isDark);
+		syncCursorTheme(e, dot, outline);
 	});
 }
 

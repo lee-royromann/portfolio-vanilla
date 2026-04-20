@@ -153,6 +153,11 @@ label[for],
     border-color: #0E1013;
 }
 
+.page--home .cursor-dot,
+.page--home .cursor-outline {
+    mix-blend-mode: difference;
+}
+
 @media (pointer: coarse) {
     .cursor-dot,
     .cursor-outline {
