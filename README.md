@@ -1,5 +1,7 @@
 # Portfolio Vanilla
 
+![Portfolio Vorschau](./src/assets/img/7_readme/readme.png)
+
 Dieses Repository enthält mein persönliches Portfolio als statische Webanwendung. Die Seite bündelt ausgewählte Projekte, zeigt meinen gestalterischen und technischen Ansatz im Frontend und bietet einen direkten Weg zur Kontaktaufnahme. Visuell arbeitet das Portfolio mit gezeichneten Linien, Sticker Elementen, Polaroid Motiven und einer bewusst eigenständigen Oberfläche.
 
 ## Projektüberblick
