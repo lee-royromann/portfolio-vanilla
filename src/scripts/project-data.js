@@ -77,7 +77,7 @@ const projectData = [
 		durationKey: 'project.momo.duration',
 		image: '../assets/img/4_projects/magic-momo.webp',
 		sticker: null,
-		github: '#',
+		github: 'https://github.com/lee-royromann/magic-momo',
 		live: 'https://magic-momo.ch',
 		tech: [
 			{ name: 'HTML', icon: '../assets/icons/skills/frontend/html.svg' },
