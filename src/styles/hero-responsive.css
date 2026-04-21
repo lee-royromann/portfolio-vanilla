@@ -1,5 +1,11 @@
 /* ---------- Mobile ---------- */
 
+@media (max-height: 870px) {
+    .hero__polaroid {
+        width: 200px;
+    }
+}
+
 @media (max-width: 980px) {
     .hero__title-line {
         font-size: clamp(64px, 10vw, 128px);
